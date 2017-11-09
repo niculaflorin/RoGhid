@@ -17,11 +17,14 @@ You will only need to run this command when dependencies change in [package.json
 
 We use yarn scripts and [Webpack][] as our build system.
 
+When opening the project in IntelliJ make sure that you ran the Maven build.
+
+Please add the Spring Module in your IDE, PLEASE DO NOT FORGET. FOLLOW THIS STEPS: http://www.jhipster.tech/configuring-ide-idea/
 
 Run the following commands in two separate terminals to create a blissful development experience where your browser
 auto-refreshes when files change on your hard drive.
 
-    ./mvnw
+    ./mvnw (instead of this you can run the server with IntelliJ. Just press start)
     yarn start
 
 [Yarn][] is also used to manage CSS and JavaScript dependencies used in this application. You can upgrade dependencies by
