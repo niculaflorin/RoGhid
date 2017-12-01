@@ -1,7 +1,9 @@
 /* ==========================================================================
 Main page styles
 ========================================================================== */
-
+body {
+    background-image: url("../../content/images/background-image.jpeg");
+}
 .hipster {
     display: inline-block;
     width: 347px;

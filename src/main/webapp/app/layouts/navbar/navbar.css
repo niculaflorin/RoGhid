@@ -7,7 +7,7 @@ Navbar
 }
 
 .jh-navbar {
-    background-color: #353d47;
+    background-color:  #00b300;
     padding: .2em 1em;
 }
 
@@ -19,7 +19,7 @@ Navbar
 }
 
 .jh-navbar .dropdown-item.active, .jh-navbar .dropdown-item.active:focus, .jh-navbar .dropdown-item.active:hover {
-    background-color: #353d47;
+    background-color:  #00b300;
 }
 
 .jh-navbar .dropdown-toggle::after {
@@ -84,4 +84,37 @@ Logo styles
     background: url("../../../content/images/logo-jhipster.png") no-repeat center center;
     background-size: contain;
     width: 100%;
+}
+.sidenav {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    top: 61px;
+    left: 0;
+    background-color: #BCF5A9;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
 }

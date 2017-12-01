@@ -76,4 +76,13 @@ export class NavbarComponent implements OnInit {
     getImageUrl() {
         return this.isAuthenticated() ? this.principal.getImageUrl() : null;
     }
+
+    openNav() {
+    document.getElementById('mySidenav').style.width = '250px';
+    }
+
+    closeNav() {
+    document.getElementById('mySidenav').style.width = '0';
+    }
+
 }
