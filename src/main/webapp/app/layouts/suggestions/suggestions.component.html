@@ -6,7 +6,11 @@
         <li><a href="">Orase principale</a></li>
         <li><a href="">Regiuni</a></li>
     </ul>
-    <div>
-      <img src="/images/hipster.png" alt="picture here" height="40px" width="20px">
-      </div>
+    <ul id = "obiective">
+        <li *ngFor="let objective of objectives">
+        <img src= "../../../content/images/hipster.png" alt="picture here" height="40px" width="20px">
+        <h1> {{objective.name}} </h1>
+        <h1> {{objective.image_path}} </h1>
+  </li>
+</ul>
   </div>

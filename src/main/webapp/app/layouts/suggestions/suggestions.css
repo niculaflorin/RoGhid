@@ -38,6 +38,7 @@
    text-decoration: none;
    font-size: 18px;
    color: #818181;
+   background-color: white;
    display: block;
    transition: 0.3s;
    z-index: 1;
@@ -46,4 +47,24 @@
 
 #options a:hover {
   background-color: #666;
+}
+#obiective {
+    list-style: none;
+}
+#obiective a {
+   background-color: #999;
+   padding: 4px 4px 4px 16px;
+   text-decoration: none;
+   font-size: 18px;
+   color: #818181;
+   display: block;
+   transition: 0.3s;
+   z-index: 1;
+   opacity:1;
+}
+
+#obiective img {
+    height:40px;
+    width:40px;
+    opacity: 1;
 }

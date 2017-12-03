@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input , OnInit} from '@angular/core';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+
+import { Objective } from '../../entities/objective/objective.model';
+import { ObjectiveService } from '../../entities/objective/objective.service';
+import { ResponseWrapper, createRequestOption } from '../../shared';
 
 @Component({
     selector: 'jhi-suggestions',
@@ -8,7 +12,24 @@ import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
         'suggestions.css'
     ]
 })
-export class SuggestionsComponent {
+export class SuggestionsComponent implements OnInit {
+    objectives: Objective[];
+
+    constructor(
+        private objectiveService: ObjectiveService
+    ) {
+    }
+
+    loadAll() {
+        this.objectiveService.query().subscribe(
+            (res: ResponseWrapper) => {
+                this.objectives = res.json;
+            },
+        );
+    }
+    ngOnInit() {
+    this.loadAll();
+    }
 
     ShowList() {
         document.getElementById('options').style.display = 'block';
