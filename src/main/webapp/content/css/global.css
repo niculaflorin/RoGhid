@@ -10,6 +10,7 @@ body {
     background: #e4e5e6;
     background-image: url("../images/bg-3.jpeg");
     background-repeat: no-repeat;
+    background-size: 100%;
 }
 
 a {
