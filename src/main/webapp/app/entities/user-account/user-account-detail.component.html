@@ -1,0 +1,41 @@
+
+<div *ngIf="userAccount">
+    <h2><span jhiTranslate="roGhidApp.userAccount.detail.title">User Account</span> {{userAccount.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="roGhidApp.userAccount.username">Username</span></dt>
+        <dd>
+            <span>{{userAccount.username}}</span>
+        </dd>
+        <dt><span jhiTranslate="roGhidApp.userAccount.firstName">First Name</span></dt>
+        <dd>
+            <span>{{userAccount.firstName}}</span>
+        </dd>
+        <dt><span jhiTranslate="roGhidApp.userAccount.lastName">Last Name</span></dt>
+        <dd>
+            <span>{{userAccount.lastName}}</span>
+        </dd>
+        <dt><span jhiTranslate="roGhidApp.userAccount.email">Email</span></dt>
+        <dd>
+            <span>{{userAccount.email}}</span>
+        </dd>
+        <dt><span jhiTranslate="roGhidApp.userAccount.baseUser">Base User</span></dt>
+        <dd>
+            {{userAccount.baseUser?.id}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'user-account/'+ userAccount.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

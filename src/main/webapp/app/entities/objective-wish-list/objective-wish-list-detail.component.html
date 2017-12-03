@@ -1,0 +1,37 @@
+
+<div *ngIf="objectiveWishList">
+    <h2><span jhiTranslate="roGhidApp.objectiveWishList.detail.title">Objective Wish List</span> {{objectiveWishList.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="roGhidApp.objectiveWishList.name">Name</span></dt>
+        <dd>
+            <span>{{objectiveWishList.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="roGhidApp.objectiveWishList.userAccount">User Account</span></dt>
+        <dd>
+            <div *ngIf="objectiveWishList.userAccount">
+                <a [routerLink]="['/user-account', objectiveWishList.userAccount?.id]">{{objectiveWishList.userAccount?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="roGhidApp.objectiveWishList.assignedGroup">Assigned Group</span></dt>
+        <dd>
+            <div *ngIf="objectiveWishList.assignedGroup">
+                <a [routerLink]="['/user-group', objectiveWishList.assignedGroup?.id]">{{objectiveWishList.assignedGroup?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'objective-wish-list/'+ objectiveWishList.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

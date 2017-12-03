@@ -1,0 +1,33 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "userAccount",
+            "otherEntityName": "userAccount",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "objective",
+            "otherEntityName": "objective",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "requestDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "isApproved",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20171203103734",
+    "entityTableName": "edit_request",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

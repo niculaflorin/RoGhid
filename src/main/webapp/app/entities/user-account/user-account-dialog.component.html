@@ -1,0 +1,52 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myUserAccountLabel" jhiTranslate="roGhidApp.userAccount.home.createOrEditLabel">Create or edit a User Account</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!userAccount.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="userAccount.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="roGhidApp.userAccount.username" for="field_username">Username</label>
+            <input type="text" class="form-control" name="username" id="field_username"
+                [(ngModel)]="userAccount.username"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="roGhidApp.userAccount.firstName" for="field_firstName">First Name</label>
+            <input type="text" class="form-control" name="firstName" id="field_firstName"
+                [(ngModel)]="userAccount.firstName"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="roGhidApp.userAccount.lastName" for="field_lastName">Last Name</label>
+            <input type="text" class="form-control" name="lastName" id="field_lastName"
+                [(ngModel)]="userAccount.lastName"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="roGhidApp.userAccount.email" for="field_email">Email</label>
+            <input type="text" class="form-control" name="email" id="field_email"
+                [(ngModel)]="userAccount.email"  />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="roGhidApp.userAccount.baseUser" for="field_baseUser">Base User</label>
+            <select class="form-control" id="field_baseUser" name="baseUser" [(ngModel)]="userAccount.baseUser" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userOption.id === userAccount.baseUser?.id ? userAccount.baseUser : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

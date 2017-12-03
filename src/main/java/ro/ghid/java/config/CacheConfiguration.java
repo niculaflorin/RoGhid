@@ -45,6 +45,27 @@ public class CacheConfiguration {
             cm.createCache(ro.ghid.java.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(ro.ghid.java.domain.User.class.getName() + ".authorities", jcacheConfiguration);
             cm.createCache(ro.ghid.java.domain.SocialUserConnection.class.getName(), jcacheConfiguration);
+            cm.createCache(ro.ghid.java.domain.UserAccount.class.getName(), jcacheConfiguration);
+            cm.createCache(ro.ghid.java.domain.UserAccount.class.getName() + ".postedRatings", jcacheConfiguration);
+            cm.createCache(ro.ghid.java.domain.UserAccount.class.getName() + ".postedComments", jcacheConfiguration);
+            cm.createCache(ro.ghid.java.domain.UserAccount.class.getName() + ".editRequests", jcacheConfiguration);
+            cm.createCache(ro.ghid.java.domain.UserAccount.class.getName() + ".wishlists", jcacheConfiguration);
+            cm.createCache(ro.ghid.java.domain.UserAccount.class.getName() + ".groups", jcacheConfiguration);
+            cm.createCache(ro.ghid.java.domain.Objective.class.getName(), jcacheConfiguration);
+            cm.createCache(ro.ghid.java.domain.Objective.class.getName() + ".ratings", jcacheConfiguration);
+            cm.createCache(ro.ghid.java.domain.Objective.class.getName() + ".comments", jcacheConfiguration);
+            cm.createCache(ro.ghid.java.domain.Objective.class.getName() + ".editRequests", jcacheConfiguration);
+            cm.createCache(ro.ghid.java.domain.Rating.class.getName(), jcacheConfiguration);
+            cm.createCache(ro.ghid.java.domain.Comment.class.getName(), jcacheConfiguration);
+            cm.createCache(ro.ghid.java.domain.City.class.getName(), jcacheConfiguration);
+            cm.createCache(ro.ghid.java.domain.City.class.getName() + ".objectives", jcacheConfiguration);
+            cm.createCache(ro.ghid.java.domain.Region.class.getName(), jcacheConfiguration);
+            cm.createCache(ro.ghid.java.domain.Region.class.getName() + ".cities", jcacheConfiguration);
+            cm.createCache(ro.ghid.java.domain.EditRequest.class.getName(), jcacheConfiguration);
+            cm.createCache(ro.ghid.java.domain.ObjectiveWishList.class.getName(), jcacheConfiguration);
+            cm.createCache(ro.ghid.java.domain.ObjectiveWishList.class.getName() + ".objectives", jcacheConfiguration);
+            cm.createCache(ro.ghid.java.domain.UserGroup.class.getName(), jcacheConfiguration);
+            cm.createCache(ro.ghid.java.domain.UserGroup.class.getName() + ".users", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

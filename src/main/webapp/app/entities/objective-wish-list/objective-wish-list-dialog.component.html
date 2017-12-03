@@ -1,0 +1,44 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myObjectiveWishListLabel" jhiTranslate="roGhidApp.objectiveWishList.home.createOrEditLabel">Create or edit a Objective Wish List</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!objectiveWishList.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="objectiveWishList.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="roGhidApp.objectiveWishList.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="objectiveWishList.name"  />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="roGhidApp.objectiveWishList.userAccount" for="field_userAccount">User Account</label>
+            <select class="form-control" id="field_userAccount" name="userAccount" [(ngModel)]="objectiveWishList.userAccount" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userAccountOption.id === objectiveWishList.userAccount?.id ? objectiveWishList.userAccount : userAccountOption" *ngFor="let userAccountOption of useraccounts; trackBy: trackUserAccountById">{{userAccountOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="roGhidApp.objectiveWishList.assignedGroup" for="field_assignedGroup">Assigned Group</label>
+            <select class="form-control" id="field_assignedGroup" name="assignedGroup" [(ngModel)]="objectiveWishList.assignedGroup">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userGroupOption.id === objectiveWishList.assignedGroup?.id ? objectiveWishList.assignedGroup : userGroupOption" *ngFor="let userGroupOption of assignedgroups; trackBy: trackUserGroupById">{{userGroupOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

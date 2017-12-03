@@ -1,0 +1,32 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "groups",
+            "relationshipName": "users",
+            "otherEntityName": "userAccount",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "assignedWishlist",
+            "otherEntityName": "objectiveWishList",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "assignedGroup"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20171203103736",
+    "entityTableName": "user_group",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}
