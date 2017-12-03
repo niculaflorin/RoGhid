@@ -21,7 +21,6 @@ import {
     NavbarComponent,
     FooterComponent,
     ProfileService,
-    PageRibbonComponent,
     ActiveMenuDirective,
     ErrorComponent,
     SuggestionsComponent
@@ -43,7 +42,6 @@ import {
         JhiMainComponent,
         NavbarComponent,
         ErrorComponent,
-        PageRibbonComponent,
         ActiveMenuDirective,
         FooterComponent,
         SuggestionsComponent
