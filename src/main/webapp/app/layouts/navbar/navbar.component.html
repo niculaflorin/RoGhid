@@ -7,24 +7,48 @@
         </a>
         <div id="mySidenav" class="sidenav">
           <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-          <a href="#">Acasa</a>
-          <a href="#">Harta</a>
-          <a href="#">Postari</a>
-          <a href="#">Liste</a>
+          <a routerLink="acasa">
+              <i class="fa fa-home" aria-hidden="true"></i>
+              <span>Acasa</span>
+          </a>
+          <a routerLink="maps">
+              <i class="fa fa-map-marker" aria-hidden="true"></i>
+              <span>Harti</span>
+          </a>
+          <a routerLink="posts">
+              <i class="fa fa-picture-o" aria-hidden="true"></i>
+              <span>Postari</span>
+          </a>
+          <a routerLink="lista">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+              <span>Lista</span>
+          </a>
           <hr>
-          <a href="#">Setari</a>
-          <a href="#">Grupuri</a>
-          <a href="#">Suport</a>
-          <a href="#">Preferinte</a>
+          <a routerLink="setari">
+              <i class="fa fa-cogs" aria-hidden="true"></i>
+              <span>Setari</span>
+          </a>
+          <a routerLink="groups">
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <span>Grupuri</span>
+          </a>
+          <a routerLink="support">
+              <i class="fa fa-question-circle-o"></i>
+              <span>Suport</span>
+          </a>
       </div>
         <a class="navbar-brand logo float-left" routerLink="/" (click)="collapseNavbar()">
             <span class="logo-img"></span>
-            <span jhiTranslate="global.title" class="navbar-title">RoGhid</span>
+           <!--<span jhiTranslate="global.title" class="navbar-title">RoGhid</span> -->
         </a>
+
     </div>
     <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
         <ul class="navbar-nav ml-auto">
                     <!-- jhipster-needle-add-element-to-admin-menu - JHipster will add entities to the admin menu here -->
+            <form class="form-inline waves-light" >
+                <input class="form-control mr-sm-2" id="searchForm" type="text" placeholder="Search">
+            </form>
             <li ngbDropdown class="nav-item dropdown pointer" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="account-menu">
                   <span *ngIf="!getImageUrl()">
@@ -32,6 +56,7 @@
                     <span jhiTranslate="global.menu.account.main">
                       Account
                     </span>
+
                   </span>
                   <span *ngIf="getImageUrl()">
                       <img [src]="getImageUrl()" class="profile-image img-circle" alt="Avatar">
