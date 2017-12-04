@@ -14,7 +14,7 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 })
 export class SuggestionsComponent implements OnInit {
     objectives: Objective[];
-
+    imageUrl = '../../../content/images/brasov.jpg';
     constructor(
         private objectiveService: ObjectiveService
     ) {
@@ -27,7 +27,9 @@ export class SuggestionsComponent implements OnInit {
             },
         );
     }
+
     ngOnInit() {
+
     this.loadAll();
     }
 
@@ -38,4 +40,5 @@ export class SuggestionsComponent implements OnInit {
      HideList() {
        document.getElementById('options').style.display = 'none';
     }
+
 }

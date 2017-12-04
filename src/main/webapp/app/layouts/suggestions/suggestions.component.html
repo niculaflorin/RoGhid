@@ -7,10 +7,10 @@
         <li><a href="">Regiuni</a></li>
     </ul>
     <ul id = "obiective">
-        <li *ngFor="let objective of objectives">
-        <img src= "../../../content/images/hipster.png" alt="picture here" height="40px" width="20px">
-        <h1> {{objective.name}} </h1>
-        <h1> {{objective.image_path}} </h1>
+        <li *ngFor=" let objective of objectives">
+        <img src= "../../../content/images/brasov.jpg" alt="picture here" >
+           <p id="numeObiectiv"> {{objective.name}} </p>
+           <p id ="descriereObiectiv" > {{objective.description}} </p>
   </li>
 </ul>
   </div>
