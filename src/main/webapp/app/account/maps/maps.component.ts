@@ -1,16 +1,14 @@
-import { Component, OnInit} from '@angular/core';
-import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { Component} from '@angular/core';
 
 @Component({
     selector: 'jhi-maps',
-    templateUrl: './maps.component.html'
+    templateUrl: './maps.component.html',
+    styleUrls: ['./maps.component.css']
 })
-export class MapsComponent implements OnInit {
+export class MapsComponent{
 
-    constructor() {
-    }
-    ngOnInit() {
-
-    }
+    lat: number = 45.8;
+    lng: number = 24.9;
+    zoom:number = 7 ;
 
 }
