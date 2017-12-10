@@ -3,6 +3,8 @@ import { RouterModule } from '@angular/router';
 
 import { RoGhidSharedModule } from '../shared';
 
+import { AgmCoreModule } from '@agm/core';
+
 import {
     Register,
     ActivateService,
@@ -30,6 +32,9 @@ import {
 @NgModule({
     imports: [
         RoGhidSharedModule,
+        AgmCoreModule.forRoot({
+            apiKey: 'AIzaSyCYwWA88TpLG7s3J0AivYirG7B4U2nWD4I'
+        }),
         RouterModule.forRoot(accountState, { useHash: true })
     ],
     declarations: [
@@ -59,3 +64,5 @@ import {
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class RoGhidAccountModule {}
+
+

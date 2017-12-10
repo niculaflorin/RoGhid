@@ -1,2 +1,20 @@
-<h2>Harta</h2>
-<p>aici vom gestiona Locatiile utilizatorului</p>
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+    <agm-marker >
+        <!--<sebm-google-map-marker
+            [latitude]="lat"
+            [longitude]="lng"
+            (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow">
+            <agm-info-window #infoWindow>
+                <strong>iiiii</strong>
+            </agm-info-window>
+        </sebm-google-map-marker>-->
+        <agm-marker *ngFor="let marker of markers"
+                                [latitude]="marker.lat"
+                                [longitude]="marker.lng"
+                                (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow">
+            <agm-info-window #infoWindow>
+                <strong>{{marker.description}}</strong>
+            </agm-info-window>
+        </agm-marker>
+    </agm-marker>
+</agm-map>

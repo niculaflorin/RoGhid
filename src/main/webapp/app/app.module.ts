@@ -3,6 +3,7 @@ import './vendor.ts';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Ng2Webstorage } from 'ng2-webstorage';
+import { AgmCoreModule } from '@agm/core';
 
 import { RoGhidSharedModule, UserRouteAccessService } from './shared';
 import { RoGhidHomeModule } from './home/home.module';
@@ -26,6 +27,7 @@ import {
     SuggestionsComponent
 } from './layouts';
 
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -36,6 +38,11 @@ import {
         RoGhidAdminModule,
         RoGhidAccountModule,
         RoGhidEntityModule,
+        AgmCoreModule.forRoot({
+            apiKey: 'AIzaSyCYwWA88TpLG7s3J0AivYirG7B4U2nWD4I'
+        }),
+        BrowserModule
+
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
@@ -53,5 +60,6 @@ import {
         UserRouteAccessService
     ],
     bootstrap: [ JhiMainComponent ]
+
 })
 export class RoGhidAppModule {}

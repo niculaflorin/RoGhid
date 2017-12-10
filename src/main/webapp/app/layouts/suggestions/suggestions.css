@@ -1,3 +1,5 @@
+
+
 .sidenav {
     height: 100%;
     width: 250px;
@@ -5,21 +7,22 @@
     z-index: 1;
     top: 57px;
     right:0px;
-    background: rgb(43,49,81);
+    background-color: rgba(255,255,255,0.5);
     overflow-x: hidden;
     transition: 0.5s;
-    opacity: 0.9;
 }
 .sidenav a:hover {
     color: #f1f1f1;
 }
+
  #menu {
     border:0;
-    padding-bottom: 20px;
+    padding:10px 10px 10px 60px;
+    background-color:#BCF5A9;
 }
 
 #menu a{
-    padding-top:10px;
+    padding-top:30px;
     color:#818181;
 }
 #menu a:hover * {
@@ -38,6 +41,7 @@
    text-decoration: none;
    font-size: 18px;
    color: #818181;
+   background-color: #ddffcc;
    display: block;
    transition: 0.3s;
    z-index: 1;
@@ -46,4 +50,34 @@
 
 #options a:hover {
   background-color: #666;
+}
+#obiective {
+    list-style: none;
+    padding-top:20px;
+}
+#obiective a {
+   background-color: #999;
+   padding: 4px 4px 4px 16px;
+   text-decoration: none;
+   font-size: 18px;
+   color: #818181;
+   display: block;
+   transition: 0.3s;
+   z-index: 1;
+   opacity:2;
+}
+
+#obiective #numeObiectiv {
+  padding-left:20%;
+  font-size:20px;
+}
+
+#obiective #descriereObiectiv {
+  font-size:15px;
+}
+
+#obiective img {
+    height:100px;
+    width:150px;
+    opacity: 1;
 }
