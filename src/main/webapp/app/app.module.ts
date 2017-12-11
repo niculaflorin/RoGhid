@@ -26,6 +26,7 @@ import {
     SuggestionsComponent
 } from './layouts';
 
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -36,6 +37,7 @@ import {
         RoGhidAdminModule,
         RoGhidAccountModule,
         RoGhidEntityModule,
+
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
