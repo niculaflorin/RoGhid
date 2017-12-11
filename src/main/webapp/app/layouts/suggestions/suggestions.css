@@ -4,7 +4,7 @@
     position: fixed;
     z-index: 1;
     top: 57px;
-    left: 1116px;
+    right:0px;
     background: rgb(43,49,81);
     overflow-x: hidden;
     transition: 0.5s;
@@ -47,5 +47,3 @@
 #options a:hover {
   background-color: #666;
 }
-
-
