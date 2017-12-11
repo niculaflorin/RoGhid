@@ -1,0 +1,41 @@
+
+<div *ngIf="comment">
+    <h2><span jhiTranslate="roGhidApp.comment.detail.title">Comment</span> {{comment.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="roGhidApp.comment.comment">Comment</span></dt>
+        <dd>
+            <span>{{comment.comment}}</span>
+        </dd>
+        <dt><span jhiTranslate="roGhidApp.comment.creationDate">Creation Date</span></dt>
+        <dd>
+            <span>{{comment.creationDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="roGhidApp.comment.objective">Objective</span></dt>
+        <dd>
+            <div *ngIf="comment.objective">
+                <a [routerLink]="['/objective', comment.objective?.id]">{{comment.objective?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="roGhidApp.comment.poster">Poster</span></dt>
+        <dd>
+            <div *ngIf="comment.poster">
+                <a [routerLink]="['/user-account', comment.poster?.id]">{{comment.poster?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'comment/'+ comment.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

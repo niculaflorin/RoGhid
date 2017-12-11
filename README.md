@@ -2,6 +2,11 @@
 This application was generated using JHipster 4.10.2, you can find documentation and help at [http://www.jhipster.tech/documentation-archive/v4.10.2](http://www.jhipster.tech/documentation-archive/v4.10.2).
 
 ## Development
+## Codding standards: 
+    1. No commit direct to master
+    2. When starting a task you will create a branch with the name of the issue inside [] like RG-01
+    2. When work is done a PR will be submited against master, in order to push to master you need to have two +1. The push will be done by the author of the PR once it has the approvals. 
+    3. When fixing a bug created by an commit the commit name will be COMMIT NAME ADDENDUM
 
 Before you can build this project, you must install and configure the following dependencies on your machine:
 

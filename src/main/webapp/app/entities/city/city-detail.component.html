@@ -1,0 +1,31 @@
+
+<div *ngIf="city">
+    <h2><span jhiTranslate="roGhidApp.city.detail.title">City</span> {{city.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="roGhidApp.city.name">Name</span></dt>
+        <dd>
+            <span>{{city.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="roGhidApp.city.region">Region</span></dt>
+        <dd>
+            <div *ngIf="city.region">
+                <a [routerLink]="['/region', city.region?.id]">{{city.region?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'city/'+ city.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

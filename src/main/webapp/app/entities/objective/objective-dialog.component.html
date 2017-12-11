@@ -1,0 +1,117 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myObjectiveLabel" jhiTranslate="roGhidApp.objective.home.createOrEditLabel">Create or edit a Objective</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!objective.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="objective.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="roGhidApp.objective.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="objective.name" required minlength="3" />
+            <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.name?.errors?.minlength" jhiTranslate="entity.validation.minlength" translateValues="{ min: 3 }">
+                   This field is required to be at least 3 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="roGhidApp.objective.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                [(ngModel)]="objective.description" required minlength="10" />
+            <div [hidden]="!(editForm.controls.description?.dirty && editForm.controls.description?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.description?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.description?.errors?.minlength" jhiTranslate="entity.validation.minlength" translateValues="{ min: 10 }">
+                   This field is required to be at least 10 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="roGhidApp.objective.imagePath" for="field_imagePath">Image Path</label>
+            <input type="text" class="form-control" name="imagePath" id="field_imagePath"
+                [(ngModel)]="objective.imagePath"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="roGhidApp.objective.creationDate" for="field_creationDate">Creation Date</label>
+            <div class="d-flex">
+                <input id="field_creationDate" type="datetime-local" class="form-control" name="creationDate" [(ngModel)]="objective.creationDate"
+                required  />
+            </div>
+            <div [hidden]="!(editForm.controls.creationDate?.dirty && editForm.controls.creationDate?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.creationDate?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.creationDate?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="roGhidApp.objective.rating" for="field_rating">Rating</label>
+            <input type="number" class="form-control" name="rating" id="field_rating"
+                [(ngModel)]="objective.rating" min="1" max="10" />
+            <div [hidden]="!(editForm.controls.rating?.dirty && editForm.controls.rating?.invalid)">
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.rating?.errors?.min" jhiTranslate="entity.validation.min" translateValues="{ min: 1 }">
+                    This field should be at least 1.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.rating?.errors?.max" jhiTranslate="entity.validation.max" translateValues="{ max: 10 }">
+                    This field cannot be more than 10.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.rating?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="roGhidApp.objective.creator" for="field_creator">Creator</label>
+            <select class="form-control" id="field_creator" name="creator" [(ngModel)]="objective.creator">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userAccountOption.id === objective.creator?.id ? objective.creator : userAccountOption" *ngFor="let userAccountOption of creators; trackBy: trackUserAccountById">{{userAccountOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="roGhidApp.objective.city" for="field_city">City</label>
+            <select class="form-control" id="field_city" name="city" [(ngModel)]="objective.city" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="cityOption.id === objective.city?.id ? objective.city : cityOption" *ngFor="let cityOption of cities; trackBy: trackCityById">{{cityOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="roGhidApp.objective.objectiveWishList" for="field_objectiveWishList">Objective Wish List</label>
+            <select class="form-control" id="field_objectiveWishList" name="objectiveWishList" [(ngModel)]="objective.objectiveWishList" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="objectiveWishListOption.id === objective.objectiveWishList?.id ? objective.objectiveWishList : objectiveWishListOption" *ngFor="let objectiveWishListOption of objectivewishlists; trackBy: trackObjectiveWishListById">{{objectiveWishListOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

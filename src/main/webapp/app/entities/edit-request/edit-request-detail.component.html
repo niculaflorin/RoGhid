@@ -1,0 +1,41 @@
+
+<div *ngIf="editRequest">
+    <h2><span jhiTranslate="roGhidApp.editRequest.detail.title">Edit Request</span> {{editRequest.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="roGhidApp.editRequest.requestDate">Request Date</span></dt>
+        <dd>
+            <span>{{editRequest.requestDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="roGhidApp.editRequest.isApproved">Is Approved</span></dt>
+        <dd>
+            <span>{{editRequest.isApproved}}</span>
+        </dd>
+        <dt><span jhiTranslate="roGhidApp.editRequest.userAccount">User Account</span></dt>
+        <dd>
+            <div *ngIf="editRequest.userAccount">
+                <a [routerLink]="['/user-account', editRequest.userAccount?.id]">{{editRequest.userAccount?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="roGhidApp.editRequest.objective">Objective</span></dt>
+        <dd>
+            <div *ngIf="editRequest.objective">
+                <a [routerLink]="['/objective', editRequest.objective?.id]">{{editRequest.objective?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'edit-request/'+ editRequest.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

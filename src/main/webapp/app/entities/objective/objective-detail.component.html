@@ -1,0 +1,59 @@
+
+<div *ngIf="objective">
+    <h2><span jhiTranslate="roGhidApp.objective.detail.title">Objective</span> {{objective.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="roGhidApp.objective.name">Name</span></dt>
+        <dd>
+            <span>{{objective.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="roGhidApp.objective.description">Description</span></dt>
+        <dd>
+            <span>{{objective.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="roGhidApp.objective.imagePath">Image Path</span></dt>
+        <dd>
+            <span>{{objective.imagePath}}</span>
+        </dd>
+        <dt><span jhiTranslate="roGhidApp.objective.creationDate">Creation Date</span></dt>
+        <dd>
+            <span>{{objective.creationDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="roGhidApp.objective.rating">Rating</span></dt>
+        <dd>
+            <span>{{objective.rating}}</span>
+        </dd>
+        <dt><span jhiTranslate="roGhidApp.objective.creator">Creator</span></dt>
+        <dd>
+            <div *ngIf="objective.creator">
+                <a [routerLink]="['/user-account', objective.creator?.id]">{{objective.creator?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="roGhidApp.objective.city">City</span></dt>
+        <dd>
+            <div *ngIf="objective.city">
+                <a [routerLink]="['/city', objective.city?.id]">{{objective.city?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="roGhidApp.objective.objectiveWishList">Objective Wish List</span></dt>
+        <dd>
+            <div *ngIf="objective.objectiveWishList">
+                <a [routerLink]="['/objective-wish-list', objective.objectiveWishList?.id]">{{objective.objectiveWishList?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'objective/'+ objective.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

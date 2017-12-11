@@ -1,0 +1,68 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "baseUser",
+            "otherEntityName": "user",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "userAccount"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "postedRating",
+            "otherEntityName": "rating",
+            "otherEntityRelationshipName": "poster"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "postedComments",
+            "otherEntityName": "comment",
+            "otherEntityRelationshipName": "poster"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "editRequests",
+            "otherEntityName": "editRequest",
+            "otherEntityRelationshipName": "userAccount"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "wishlists",
+            "otherEntityName": "objectiveWishList",
+            "otherEntityRelationshipName": "userAccount"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "groups",
+            "otherEntityName": "userGroup",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "users"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "username",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "firstName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lastName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20171203103728",
+    "entityTableName": "user_account",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

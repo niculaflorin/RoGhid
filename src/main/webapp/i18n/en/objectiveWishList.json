@@ -1,0 +1,24 @@
+{
+    "roGhidApp": {
+        "objectiveWishList" : {
+            "home": {
+                "title": "Objective Wish Lists",
+                "createLabel": "Create a new Objective Wish List",
+                "createOrEditLabel": "Create or edit a Objective Wish List"
+            },
+            "created": "A new Objective Wish List is created with identifier {{ param }}",
+            "updated": "A Objective Wish List is updated with identifier {{ param }}",
+            "deleted": "A Objective Wish List is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Objective Wish List {{ id }}?"
+            },
+            "detail": {
+                "title": "Objective Wish List"
+            },
+            "name": "Name",
+            "userAccount": "User Account",
+            "assignedGroup": "Assigned Group",
+            "objectives": "Objectives"
+        }
+    }
+}
