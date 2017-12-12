@@ -79,12 +79,20 @@
             ],
             "fieldValidateRulesMin": 1,
             "fieldValidateRulesMax": 10
+        },
+        {
+            "fieldName": "latitude",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "longitude",
+            "fieldType": "Double"
         }
     ],
     "changelogDate": "20171203103729",
-    "entityTableName": "objective",
     "dto": "no",
-    "pagination": "no",
     "service": "no",
-    "jpaMetamodelFiltering": false
+    "entityTableName": "objective",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
 }

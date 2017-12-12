@@ -8,6 +8,8 @@ export class Objective implements BaseEntity {
         public imagePath?: string,
         public creationDate?: any,
         public rating?: number,
+        public latitude?: number,
+        public longitude?: number,
         public creator?: BaseEntity,
         public ratings?: BaseEntity[],
         public comments?: BaseEntity[],
