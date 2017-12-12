@@ -55,6 +55,12 @@ public class ObjectiveResourceIntTest {
     private static final Float DEFAULT_RATING = 1F;
     private static final Float UPDATED_RATING = 2F;
 
+    private static final Double DEFAULT_LATITUDE = 1D;
+    private static final Double UPDATED_LATITUDE = 2D;
+
+    private static final Double DEFAULT_LONGITUDE = 1D;
+    private static final Double UPDATED_LONGITUDE = 2D;
+
     @Autowired
     private ObjectiveRepository objectiveRepository;
 
@@ -97,7 +103,9 @@ public class ObjectiveResourceIntTest {
             .description(DEFAULT_DESCRIPTION)
             .imagePath(DEFAULT_IMAGE_PATH)
             .creationDate(DEFAULT_CREATION_DATE)
-            .rating(DEFAULT_RATING);
+            .rating(DEFAULT_RATING)
+            .latitude(DEFAULT_LATITUDE)
+            .longitude(DEFAULT_LONGITUDE);
         return objective;
     }
 
@@ -126,6 +134,8 @@ public class ObjectiveResourceIntTest {
         assertThat(testObjective.getImagePath()).isEqualTo(DEFAULT_IMAGE_PATH);
         assertThat(testObjective.getCreationDate()).isEqualTo(DEFAULT_CREATION_DATE);
         assertThat(testObjective.getRating()).isEqualTo(DEFAULT_RATING);
+        assertThat(testObjective.getLatitude()).isEqualTo(DEFAULT_LATITUDE);
+        assertThat(testObjective.getLongitude()).isEqualTo(DEFAULT_LONGITUDE);
     }
 
     @Test
@@ -216,7 +226,9 @@ public class ObjectiveResourceIntTest {
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].imagePath").value(hasItem(DEFAULT_IMAGE_PATH.toString())))
             .andExpect(jsonPath("$.[*].creationDate").value(hasItem(DEFAULT_CREATION_DATE.toString())))
-            .andExpect(jsonPath("$.[*].rating").value(hasItem(DEFAULT_RATING.doubleValue())));
+            .andExpect(jsonPath("$.[*].rating").value(hasItem(DEFAULT_RATING.doubleValue())))
+            .andExpect(jsonPath("$.[*].latitude").value(hasItem(DEFAULT_LATITUDE.doubleValue())))
+            .andExpect(jsonPath("$.[*].longitude").value(hasItem(DEFAULT_LONGITUDE.doubleValue())));
     }
 
     @Test
@@ -234,7 +246,9 @@ public class ObjectiveResourceIntTest {
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.imagePath").value(DEFAULT_IMAGE_PATH.toString()))
             .andExpect(jsonPath("$.creationDate").value(DEFAULT_CREATION_DATE.toString()))
-            .andExpect(jsonPath("$.rating").value(DEFAULT_RATING.doubleValue()));
+            .andExpect(jsonPath("$.rating").value(DEFAULT_RATING.doubleValue()))
+            .andExpect(jsonPath("$.latitude").value(DEFAULT_LATITUDE.doubleValue()))
+            .andExpect(jsonPath("$.longitude").value(DEFAULT_LONGITUDE.doubleValue()));
     }
 
     @Test
@@ -259,7 +273,9 @@ public class ObjectiveResourceIntTest {
             .description(UPDATED_DESCRIPTION)
             .imagePath(UPDATED_IMAGE_PATH)
             .creationDate(UPDATED_CREATION_DATE)
-            .rating(UPDATED_RATING);
+            .rating(UPDATED_RATING)
+            .latitude(UPDATED_LATITUDE)
+            .longitude(UPDATED_LONGITUDE);
 
         restObjectiveMockMvc.perform(put("/api/objectives")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -275,6 +291,8 @@ public class ObjectiveResourceIntTest {
         assertThat(testObjective.getImagePath()).isEqualTo(UPDATED_IMAGE_PATH);
         assertThat(testObjective.getCreationDate()).isEqualTo(UPDATED_CREATION_DATE);
         assertThat(testObjective.getRating()).isEqualTo(UPDATED_RATING);
+        assertThat(testObjective.getLatitude()).isEqualTo(UPDATED_LATITUDE);
+        assertThat(testObjective.getLongitude()).isEqualTo(UPDATED_LONGITUDE);
     }
 
     @Test

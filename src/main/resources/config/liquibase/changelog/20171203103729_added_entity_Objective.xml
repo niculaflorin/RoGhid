@@ -40,6 +40,14 @@
             <column name="rating" type="${floatType}">
                 <constraints nullable="true" />
             </column>
+
+            <column name="latitude" type="double">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="longitude" type="double">
+                <constraints nullable="true" />
+            </column>
             <column name="creator_id" type="bigint">
                 <constraints unique="true" nullable="true" />
             </column>

@@ -20,6 +20,8 @@
             "imagePath": "Image Path",
             "creationDate": "Creation Date",
             "rating": "Rating",
+            "latitude": "Latitude",
+            "longitude": "Longitude",
             "creator": "Creator",
             "ratings": "Ratings",
             "comments": "Comments",

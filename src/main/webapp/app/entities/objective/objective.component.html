@@ -22,6 +22,8 @@
             <th><span jhiTranslate="roGhidApp.objective.imagePath">Image Path</span></th>
             <th><span jhiTranslate="roGhidApp.objective.creationDate">Creation Date</span></th>
             <th><span jhiTranslate="roGhidApp.objective.rating">Rating</span></th>
+            <th><span jhiTranslate="roGhidApp.objective.latitude">Latitude</span></th>
+            <th><span jhiTranslate="roGhidApp.objective.longitude">Longitude</span></th>
             <th><span jhiTranslate="roGhidApp.objective.creator">Creator</span></th>
             <th><span jhiTranslate="roGhidApp.objective.city">City</span></th>
             <th><span jhiTranslate="roGhidApp.objective.objectiveWishList">Objective Wish List</span></th>
@@ -36,6 +38,8 @@
                 <td>{{objective.imagePath}}</td>
                 <td>{{objective.creationDate | date:'medium'}}</td>
                 <td>{{objective.rating}}</td>
+                <td>{{objective.latitude}}</td>
+                <td>{{objective.longitude}}</td>
                 <td>
                     <div *ngIf="objective.creator">
                         <a [routerLink]="['../user-account', objective.creator?.id ]" >{{objective.creator?.id}}</a>

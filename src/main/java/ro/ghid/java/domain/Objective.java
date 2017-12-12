@@ -49,6 +49,12 @@ public class Objective implements Serializable {
     @Column(name = "rating")
     private Float rating;
 
+    @Column(name = "latitude")
+    private Double latitude;
+
+    @Column(name = "longitude")
+    private Double longitude;
+
     @OneToOne
     @JoinColumn(unique = true)
     private UserAccount creator;
@@ -146,6 +152,32 @@ public class Objective implements Serializable {
 
     public void setRating(Float rating) {
         this.rating = rating;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public Objective latitude(Double latitude) {
+        this.latitude = latitude;
+        return this;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public Objective longitude(Double longitude) {
+        this.longitude = longitude;
+        return this;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 
     public UserAccount getCreator() {
@@ -292,6 +324,8 @@ public class Objective implements Serializable {
             ", imagePath='" + getImagePath() + "'" +
             ", creationDate='" + getCreationDate() + "'" +
             ", rating='" + getRating() + "'" +
+            ", latitude='" + getLatitude() + "'" +
+            ", longitude='" + getLongitude() + "'" +
             "}";
     }
 }
