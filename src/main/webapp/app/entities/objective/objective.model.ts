@@ -10,6 +10,8 @@ export class Objective implements BaseEntity {
         public rating?: number,
         public latitude?: number,
         public longitude?: number,
+        public coverImageContentType?: string,
+        public coverImage?: any,
         public creator?: BaseEntity,
         public ratings?: BaseEntity[],
         public comments?: BaseEntity[],

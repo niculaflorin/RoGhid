@@ -14,6 +14,7 @@
     <include file="config/liquibase/changelog/20171203103734_added_entity_EditRequest.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171203103735_added_entity_ObjectiveWishList.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171203103736_added_entity_UserGroup.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20171216214055_Added_Cover_Image_To_Objective.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20171203103728_added_entity_constraints_UserAccount.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20171203103729_added_entity_constraints_Objective.xml" relativeToChangelogFile="false"/>

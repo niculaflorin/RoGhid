@@ -1,14 +1,17 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
-import { JhiEventManager } from 'ng-jhipster';
+import { JhiEventManager, JhiDataUtils } from 'ng-jhipster';
 
 import { Objective } from './objective.model';
 import { ObjectiveService } from './objective.service';
 
 @Component({
     selector: 'jhi-objective-detail',
-    templateUrl: './objective-detail.component.html'
+    templateUrl: './objective-detail.component.html',
+    styleUrls: [
+        'objective-detail.css'
+    ]
 })
 export class ObjectiveDetailComponent implements OnInit, OnDestroy {
 
@@ -18,6 +21,7 @@ export class ObjectiveDetailComponent implements OnInit, OnDestroy {
 
     constructor(
         private eventManager: JhiEventManager,
+        private dataUtils: JhiDataUtils,
         private objectiveService: ObjectiveService,
         private route: ActivatedRoute
     ) {
@@ -34,6 +38,13 @@ export class ObjectiveDetailComponent implements OnInit, OnDestroy {
         this.objectiveService.find(id).subscribe((objective) => {
             this.objective = objective;
         });
+    }
+    byteSize(field) {
+        return this.dataUtils.byteSize(field);
+    }
+
+    openFile(contentType, field) {
+        return this.dataUtils.openFile(contentType, field);
     }
     previousState() {
         window.history.back();
