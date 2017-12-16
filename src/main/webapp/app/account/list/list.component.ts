@@ -5,13 +5,13 @@ import { Router } from '@angular/router';
 import { LoginModalService, EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE } from '../../shared';
 
 @Component({
-    selector: 'jhi-setari',
-    templateUrl: './setari.component.html',
+    selector: 'jhi-list',
+    templateUrl: './list.component.html',
     styleUrls: [
-        './setari.css'
+        './list.css'
     ]
 })
-export class SetariComponent implements OnInit {
+export class ListComponent implements OnInit {
 
     constructor(
         private elementRef: ElementRef,
@@ -22,9 +22,5 @@ export class SetariComponent implements OnInit {
 
     ngOnInit() {
 
-    }
-
-    setari() {
-      console.log('aiciii');
     }
 }

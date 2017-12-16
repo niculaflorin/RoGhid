@@ -258,3 +258,11 @@ Social Buttons
     color: #fff;
 }
 /* jhipster-needle-css-add-main JHipster will add new css style */
+.btn-green{
+  background-color: #1e931c;
+  color: #fff;
+  border-color: #1e931c;
+}
+.listObjectives{
+  background-color: #e1f3dbe6;
+}

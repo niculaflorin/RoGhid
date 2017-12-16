@@ -19,6 +19,7 @@ import {
     GroupsComponent,
     MapsComponent,
     SupportComponent,
+    ListComponent,
     ActivateComponent,
     PasswordComponent,
     PasswordResetInitComponent,
@@ -27,8 +28,7 @@ import {
     SocialRegisterComponent,
     SocialAuthComponent,
     accountState
-} from './';
-
+  } from './';
 @NgModule({
     imports: [
         RoGhidSharedModule,
@@ -47,6 +47,7 @@ import {
         PostsComponent,
         GroupsComponent,
         MapsComponent,
+        ListComponent,
         SupportComponent,
         PasswordComponent,
         PasswordStrengthBarComponent,
@@ -64,5 +65,3 @@ import {
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class RoGhidAccountModule {}
-
-
