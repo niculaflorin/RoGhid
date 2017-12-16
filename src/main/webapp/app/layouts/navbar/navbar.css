@@ -7,9 +7,14 @@ Navbar
 }
 
 .jh-navbar {
-    background-color: #51d525f0;
+  background-color: #51d525;
     padding: .2em 1em;
-    height: 57px;
+    height: 60px;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    margin: 0px;
+    top: 0;
 }
 
 .jh-navbar .profile-image {
@@ -92,12 +97,11 @@ Logo styles
     width: 250px;
     position: fixed;
     z-index: 1;
-    top: 57px;
+    top: 60px;
     left: 0;
     background-color: #bcf5a9eb;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;
 }
 
 .sidenav a {

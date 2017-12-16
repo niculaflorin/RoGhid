@@ -11,6 +11,7 @@ body {
     background-image: url("../images/bg-3.jpeg");
     background-repeat: no-repeat;
     background-size: 100%;
+    background-attachment: fixed;
 }
 
 a {
@@ -50,11 +51,11 @@ Generic styles
 
 .jh-card {
     padding: 1.5%;
-    margin-top: 20px;
     border: none;
     margin-left:250px;
     margin-right: 250px;
     background-color: #e1f3dbd6;
+    top: 70px;
 }
 
 .error {
