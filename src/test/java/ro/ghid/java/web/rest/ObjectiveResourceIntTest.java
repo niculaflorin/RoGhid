@@ -19,6 +19,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Base64Utils;
 
 import javax.persistence.EntityManager;
 import java.time.Instant;
@@ -60,6 +61,11 @@ public class ObjectiveResourceIntTest {
 
     private static final Double DEFAULT_LONGITUDE = 1D;
     private static final Double UPDATED_LONGITUDE = 2D;
+
+    private static final byte[] DEFAULT_COVER_IMAGE = TestUtil.createByteArray(1, "0");
+    private static final byte[] UPDATED_COVER_IMAGE = TestUtil.createByteArray(2, "1");
+    private static final String DEFAULT_COVER_IMAGE_CONTENT_TYPE = "image/jpg";
+    private static final String UPDATED_COVER_IMAGE_CONTENT_TYPE = "image/png";
 
     @Autowired
     private ObjectiveRepository objectiveRepository;
@@ -105,7 +111,9 @@ public class ObjectiveResourceIntTest {
             .creationDate(DEFAULT_CREATION_DATE)
             .rating(DEFAULT_RATING)
             .latitude(DEFAULT_LATITUDE)
-            .longitude(DEFAULT_LONGITUDE);
+            .longitude(DEFAULT_LONGITUDE)
+            .coverImage(DEFAULT_COVER_IMAGE)
+            .coverImageContentType(DEFAULT_COVER_IMAGE_CONTENT_TYPE);
         return objective;
     }
 
@@ -136,6 +144,8 @@ public class ObjectiveResourceIntTest {
         assertThat(testObjective.getRating()).isEqualTo(DEFAULT_RATING);
         assertThat(testObjective.getLatitude()).isEqualTo(DEFAULT_LATITUDE);
         assertThat(testObjective.getLongitude()).isEqualTo(DEFAULT_LONGITUDE);
+        assertThat(testObjective.getCoverImage()).isEqualTo(DEFAULT_COVER_IMAGE);
+        assertThat(testObjective.getCoverImageContentType()).isEqualTo(DEFAULT_COVER_IMAGE_CONTENT_TYPE);
     }
 
     @Test
@@ -228,7 +238,9 @@ public class ObjectiveResourceIntTest {
             .andExpect(jsonPath("$.[*].creationDate").value(hasItem(DEFAULT_CREATION_DATE.toString())))
             .andExpect(jsonPath("$.[*].rating").value(hasItem(DEFAULT_RATING.doubleValue())))
             .andExpect(jsonPath("$.[*].latitude").value(hasItem(DEFAULT_LATITUDE.doubleValue())))
-            .andExpect(jsonPath("$.[*].longitude").value(hasItem(DEFAULT_LONGITUDE.doubleValue())));
+            .andExpect(jsonPath("$.[*].longitude").value(hasItem(DEFAULT_LONGITUDE.doubleValue())))
+            .andExpect(jsonPath("$.[*].coverImageContentType").value(hasItem(DEFAULT_COVER_IMAGE_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].coverImage").value(hasItem(Base64Utils.encodeToString(DEFAULT_COVER_IMAGE))));
     }
 
     @Test
@@ -248,7 +260,9 @@ public class ObjectiveResourceIntTest {
             .andExpect(jsonPath("$.creationDate").value(DEFAULT_CREATION_DATE.toString()))
             .andExpect(jsonPath("$.rating").value(DEFAULT_RATING.doubleValue()))
             .andExpect(jsonPath("$.latitude").value(DEFAULT_LATITUDE.doubleValue()))
-            .andExpect(jsonPath("$.longitude").value(DEFAULT_LONGITUDE.doubleValue()));
+            .andExpect(jsonPath("$.longitude").value(DEFAULT_LONGITUDE.doubleValue()))
+            .andExpect(jsonPath("$.coverImageContentType").value(DEFAULT_COVER_IMAGE_CONTENT_TYPE))
+            .andExpect(jsonPath("$.coverImage").value(Base64Utils.encodeToString(DEFAULT_COVER_IMAGE)));
     }
 
     @Test
@@ -275,7 +289,9 @@ public class ObjectiveResourceIntTest {
             .creationDate(UPDATED_CREATION_DATE)
             .rating(UPDATED_RATING)
             .latitude(UPDATED_LATITUDE)
-            .longitude(UPDATED_LONGITUDE);
+            .longitude(UPDATED_LONGITUDE)
+            .coverImage(UPDATED_COVER_IMAGE)
+            .coverImageContentType(UPDATED_COVER_IMAGE_CONTENT_TYPE);
 
         restObjectiveMockMvc.perform(put("/api/objectives")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -293,6 +309,8 @@ public class ObjectiveResourceIntTest {
         assertThat(testObjective.getRating()).isEqualTo(UPDATED_RATING);
         assertThat(testObjective.getLatitude()).isEqualTo(UPDATED_LATITUDE);
         assertThat(testObjective.getLongitude()).isEqualTo(UPDATED_LONGITUDE);
+        assertThat(testObjective.getCoverImage()).isEqualTo(UPDATED_COVER_IMAGE);
+        assertThat(testObjective.getCoverImageContentType()).isEqualTo(UPDATED_COVER_IMAGE_CONTENT_TYPE);
     }
 
     @Test

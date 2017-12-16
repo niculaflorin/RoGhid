@@ -87,6 +87,11 @@
         {
             "fieldName": "longitude",
             "fieldType": "Double"
+        },
+        {
+            "fieldName": "coverImage",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
         }
     ],
     "changelogDate": "20171203103729",

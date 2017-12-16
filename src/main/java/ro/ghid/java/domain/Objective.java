@@ -55,6 +55,13 @@ public class Objective implements Serializable {
     @Column(name = "longitude")
     private Double longitude;
 
+    @Lob
+    @Column(name = "cover_image")
+    private byte[] coverImage;
+
+    @Column(name = "cover_image_content_type")
+    private String coverImageContentType;
+
     @OneToOne
     @JoinColumn(unique = true)
     private UserAccount creator;
@@ -178,6 +185,32 @@ public class Objective implements Serializable {
 
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
+    }
+
+    public byte[] getCoverImage() {
+        return coverImage;
+    }
+
+    public Objective coverImage(byte[] coverImage) {
+        this.coverImage = coverImage;
+        return this;
+    }
+
+    public void setCoverImage(byte[] coverImage) {
+        this.coverImage = coverImage;
+    }
+
+    public String getCoverImageContentType() {
+        return coverImageContentType;
+    }
+
+    public Objective coverImageContentType(String coverImageContentType) {
+        this.coverImageContentType = coverImageContentType;
+        return this;
+    }
+
+    public void setCoverImageContentType(String coverImageContentType) {
+        this.coverImageContentType = coverImageContentType;
     }
 
     public UserAccount getCreator() {
@@ -326,6 +359,8 @@ public class Objective implements Serializable {
             ", rating='" + getRating() + "'" +
             ", latitude='" + getLatitude() + "'" +
             ", longitude='" + getLongitude() + "'" +
+            ", coverImage='" + getCoverImage() + "'" +
+            ", coverImageContentType='" + coverImageContentType + "'" +
             "}";
     }
 }

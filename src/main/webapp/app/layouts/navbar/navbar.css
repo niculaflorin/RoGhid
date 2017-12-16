@@ -11,7 +11,7 @@ Navbar
     padding: .2em 1em;
     height: 60px;
     position: fixed;
-    z-index: 1;
+    z-index: 9999;
     width: 100%;
     margin: 0px;
     top: 0;

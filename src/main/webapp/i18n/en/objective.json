@@ -22,6 +22,7 @@
             "rating": "Rating",
             "latitude": "Latitude",
             "longitude": "Longitude",
+            "coverImage": "Cover Image",
             "creator": "Creator",
             "ratings": "Ratings",
             "comments": "Comments",

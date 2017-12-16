@@ -93,6 +93,23 @@
             <input type="number" class="form-control" name="longitude" id="field_longitude"
                 [(ngModel)]="objective.longitude"  />
         </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="roGhidApp.objective.coverImage" for="field_coverImage">Cover Image</label>
+            <div>
+                <img [src]="'data:' + objective.coverImageContentType + ';base64,' + objective.coverImage" style="max-height: 100px;" *ngIf="objective.coverImage" alt="objective image"/>
+                <div *ngIf="objective.coverImage" class="form-text text-danger clearfix">
+                    <span class="pull-left">{{objective.coverImageContentType}}, {{byteSize(objective.coverImage)}}</span>
+                    <button type="button" (click)="clearInputImage('coverImage', 'coverImageContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="file_coverImage" (change)="setFileData($event, objective, 'coverImage', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+            </div>
+            <input type="hidden" class="form-control" name="coverImage" id="field_coverImage"
+                [(ngModel)]="objective.coverImage"  />
+            <input type="hidden" class="form-control" name="coverImageContentType" id="field_coverImageContentType"
+                [(ngModel)]="objective.coverImageContentType" />
+        </div>
 
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="roGhidApp.objective.creator" for="field_creator">Creator</label>
