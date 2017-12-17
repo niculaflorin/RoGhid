@@ -44,7 +44,7 @@ export class MapsComponent{
 
 
     markerIconUrl() {
-        return require('../../../content/images/Asset 4.png')
+        return require('../../../content/images/Asset 5.png')
     }
 
 
