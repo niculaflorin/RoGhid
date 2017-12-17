@@ -54,9 +54,9 @@ export class ObjectiveService {
         for (let i = 0; i < jsonResponse.length; i++) {
             result.push(this.convertItemFromServer(jsonResponse[i]));
         }
+        result.sort(compare);
         return new ResponseWrapper(res.headers, result, res.status);
     }
-
     /**
      * Convert a returned JSON object to Objective.
      */
@@ -76,4 +76,15 @@ export class ObjectiveService {
         copy.creationDate = this.dateUtils.toDate(objective.creationDate);
         return copy;
     }
+}
+function compare(a, b) {
+    let comparison = 0;
+
+    if (a.rating > b.rating) {
+        comparison = -1;
+    } else if (b.rating > a.rating) {
+        comparison = 1;
+    }
+
+    return comparison;
 }
