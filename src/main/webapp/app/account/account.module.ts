@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 import { RoGhidSharedModule } from '../shared';
 
 import { AgmCoreModule } from '@agm/core';
+import {RatingModule} from "ng2-rating";
+
 
 import {
     Register,
@@ -35,6 +37,7 @@ import {
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyCYwWA88TpLG7s3J0AivYirG7B4U2nWD4I'
         }),
+        RatingModule,
         RouterModule.forRoot(accountState, { useHash: true })
     ],
     declarations: [
