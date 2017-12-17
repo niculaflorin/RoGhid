@@ -10,17 +10,18 @@
         <tr>
             <td class="leftbox">
                 <p style="color:green;font-weight:bold;text-align:center;">Descriere</p>
-                <span>{{objective.description}}</span>
+                <span>{{objective.description}}</span>y
             </td>
             <td class="centerbox">
-                <p style="color:green;font-weight:bold;text-align:center;">Rating</p>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star notchecked"></span>
+                <rating [(ngModel)]="objective.rating" [readonly]="true"></rating>
             </td>
             <td class="rightbox">
+                <agm-map [latitude]="objective.latitude" [longitude]="objective.longitude" [zoom]="9">
+                    <agm-marker [latitude]="objective.latitude"
+                                [longitude]="objective.longitude">
+                        <!--[iconUrl]="markerIconUrl()">-->
+                    </agm-marker>
+                </agm-map>
             </td>
         </tr>
     </table>
