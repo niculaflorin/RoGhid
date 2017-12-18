@@ -4,6 +4,7 @@ import com.codahale.metrics.annotation.Timed;
 import ro.ghid.java.domain.Objective;
 
 import ro.ghid.java.repository.ObjectiveRepository;
+import ro.ghid.java.service.dto.ObjectiveLatLong;
 import ro.ghid.java.web.rest.errors.BadRequestAlertException;
 import ro.ghid.java.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -16,6 +17,7 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -102,6 +104,19 @@ public class ObjectiveResource {
         log.debug("REST request to get Objective : {}", id);
         Objective objective = objectiveRepository.findOne(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(objective));
+    }
+
+    @GetMapping("/objectives/latlong")
+    @Timed
+    public List<ObjectiveLatLong> getLatLongObjective() {
+        List<Objective> listObj = objectiveRepository.findAll();
+        List<ObjectiveLatLong> retval = new ArrayList<>();
+        ObjectiveLatLong objLat;
+        for (Objective obj : listObj) {
+            objLat = new ObjectiveLatLong(obj.getId(), obj.getLatitude(), obj.getLongitude());
+            retval.add(objLat);
+        }
+        return retval;
     }
 
     /**
