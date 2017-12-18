@@ -6,15 +6,15 @@
         <agm-info-window #infoWindow [maxWidth]="250" >
 
             <div class="si-content">
-                <div class="title">{{marker.title}}</div>
+                <div class="title">{{"Title TEST"}}</div>
                 <br>
-                <div class="description" ><strong>{{marker.description}}</strong></div>
+                <div class="description" ><strong>{{"Desc TEST"}}</strong></div>
                 <br>
-                <rating [(ngModel)]="marker.rating" [readonly]="true"></rating>
+                <rating [(ngModel)]="5" [readonly]="true"></rating>
                 <!--<rating [(ngModel)]="marker.rating" [fullIcon]="'◆'"-->
                 <!--[emptyIcon]="'◇'"></rating>-->
                 <br>
-                <div class="imgSrc"><img src={{marker.imgPath}} id="img2"></div>
+                <div class="imgSrc"><img src={{""}} id="img2"></div>
 
                 <!--Linkul catre componenta de detalii-->
 
