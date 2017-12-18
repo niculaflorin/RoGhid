@@ -1,21 +1,20 @@
 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
     <agm-marker *ngFor="let marker of markers"
-                [latitude]="marker.lat"
-                [longitude]="marker.lng"
-                [iconUrl]="markerIconUrl()">
-        <agm-info-window #infoWindow [maxWidth]="250" >
-
+                [latitude]="marker.latitude"
+                [longitude]="marker.longitude"
+                [iconUrl]="markerIconUrl()"
+    (markerClick)="markerInfo(marker.id)">
+        <agm-info-window #infoWindow [maxWidth]="250" [latitude]="marker.latitude + 0.2" [longitude]="marker.longitude" >
             <div class="si-content">
-                <div class="title">{{"Title TEST"}}</div>
+                <div class="title">{{objective.name}}</div>
                 <br>
-                <div class="description" ><strong>{{"Desc TEST"}}</strong></div>
+                <div class="description" ><strong>{{objective.description}}</strong></div>
                 <br>
-                <rating [(ngModel)]="5" [readonly]="true"></rating>
+                <rating [(ngModel)]="objective.rating" [readonly]="true"></rating>
                 <!--<rating [(ngModel)]="marker.rating" [fullIcon]="'◆'"-->
                 <!--[emptyIcon]="'◇'"></rating>-->
                 <br>
-                <div class="imgSrc"><img src={{""}} id="img2"></div>
-
+                <div class="imgSrc"><img src={{objective.coverImage}} id="img2"></div>
                 <!--Linkul catre componenta de detalii-->
 
                 <!--<a href="/#/objective/{{marker.id}}">-->

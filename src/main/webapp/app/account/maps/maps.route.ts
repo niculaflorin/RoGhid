@@ -6,7 +6,7 @@ export const mapsRoute: Route = {
     path: 'maps',
     component: MapsComponent,
     data: {
-        authorities: ['ROLE_USER'],
+        authorities: [],
         pageTitle: 'maps.title'
     }
 };
