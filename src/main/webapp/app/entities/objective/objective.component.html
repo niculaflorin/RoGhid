@@ -1,7 +1,7 @@
 <div class="listObjectives">
     <h2>
         <span>Lista cu obiective</span>
-        <button class="btn btn-green float-right jh-create-entity create-objective" [routerLink]="['/', { outlets: { popup: ['objective-new'] } }]">
+        <button *jhiHasAnyAuthority="'ROLE_ADMIN'" class="btn btn-green float-right jh-create-entity create-objective" [routerLink]="['/', { outlets: { popup: ['objective-new'] } }]">
             <span class="fa fa-plus"></span>
             <span>
             Adaugati un obiectiv nou
