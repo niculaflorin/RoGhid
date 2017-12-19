@@ -43,7 +43,14 @@ export class ObjectiveDialogComponent implements OnInit {
     }
 
     ngOnInit() {
-        // this.objective.creationDate = new Date();
+        var now = new Date(), year, month, date, hours, minutes, seconds, formattedDateTime;
+        year = now.getFullYear();
+        month = now.getMonth().toString().length === 1 ? '0' + (now.getMonth() + 1).toString() : now.getMonth() + 1;
+        date = now.getDate().toString().length === 1 ? '0' + (now.getDate()).toString() : now.getDate();
+        hours = now.getHours().toString().length === 1 ? '0' + now.getHours().toString() : now.getHours();
+        minutes = now.getMinutes().toString().length === 1 ? '0' + now.getMinutes().toString() : now.getMinutes();
+        formattedDateTime = year + '-' + month + '-' + date + 'T' + hours + ':' + minutes;
+        this.objective.creationDate = formattedDateTime;
         this.isSaving = false;
         this.userAccountService
             .query({filter: 'objective-is-null'})
