@@ -43,7 +43,7 @@ export class ObjectiveDialogComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.objective.creationDate = new Date();
+        // this.objective.creationDate = new Date();
         this.isSaving = false;
         this.userAccountService
             .query({filter: 'objective-is-null'})
