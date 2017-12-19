@@ -21,6 +21,18 @@ export class MapsComponent {
     zoom:number = 7 ;
     markers: Maps[];
     objective: Objective;
+
+    infoWindowOpened = null;
+    closeInfoWindow(infoWindow){
+        if( this.infoWindowOpened ===  infoWindow)
+            return;
+
+        if(this.infoWindowOpened !== null)
+            this.infoWindowOpened.close();
+
+        this.infoWindowOpened = infoWindow;
+    }
+
     markerIconUrl() {
         return require('../../../content/images/Asset 5.png')
     }
