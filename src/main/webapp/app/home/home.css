@@ -1,6 +1,7 @@
 /* ==========================================================================
 Main page styles
 ========================================================================== */
+/*
 body {
     background-image: url("../../content/images/background-image.jpeg");
 }
@@ -13,6 +14,7 @@ body {
 }
 
 /* wait autoprefixer update to allow simple generation of high pixel density media query */
+/*
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2),
 only screen and (   min--moz-device-pixel-ratio: 2),
@@ -25,4 +27,61 @@ only screen and (                min-resolution: 2dppx) {
         background-size: contain;
     }
 }
+*/
 
+.form-control { width: 300px; }
+
+.fa-spinner {
+    display: none;
+}
+.searchLabel{
+    font-size: 22px;
+    font-weight: 400;
+    color: #066206;
+    margin-left: 37%;
+}
+.searchAcasaInput{
+    border-radius: 25px;
+    margin-left: 35%;
+    opacity: 0.8;
+    background-color: #97f197;
+    margin-top: 15px;
+}
+i{
+    display: inline-block;
+    font-size: 27px;
+    color: #4ddd4d;
+}
+input{
+    display: inline-block;
+}
+
+.polaroid {
+    width: 80%;
+    margin-left: 10%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+.container {
+    padding: 10px;
+}
+
+p#objectiveName{
+    font-size:18px;
+    padding-top:5%;
+    font: italic bold 20px/30px Georgia, serif;
+}
+
+img#ImgObjective {
+    width:70%;
+    height:50%;
+}
+
+.details {
+    text-align: right;
+}
+.postari {
+    display:none;
+}

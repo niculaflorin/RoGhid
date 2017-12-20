@@ -38,6 +38,7 @@ export class ObjectiveService {
         });
     }
 
+
     query(req?: any): Observable<ResponseWrapper> {
         const options = createRequestOption(req);
         return this.http.get(this.resourceUrl, options)

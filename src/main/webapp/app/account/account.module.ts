@@ -31,6 +31,7 @@ import {
     SocialAuthComponent,
     accountState
   } from './';
+import {SearchFilterBy} from "./acasa/SearchFilter.pipe";
 @NgModule({
     imports: [
         RoGhidSharedModule,
@@ -56,7 +57,8 @@ import {
         PasswordStrengthBarComponent,
         PasswordResetInitComponent,
         PasswordResetFinishComponent,
-        SettingsComponent
+        SettingsComponent,
+        SearchFilterBy
     ],
     providers: [
         Register,

@@ -1,2 +1,33 @@
-<h2>Acasa!</h2>
-<p>aici vom adauga o frumoasa pagina de inceput </p>
+<ng-template #rt let-r="result" let-t="term">
+    {{ r.name}}
+</ng-template>
+<div  class="box" id = "box">
+    <label for="typeahead-template" class="searchLabel">Ce loc ti-ai dori sa vizitezi?</label>
+    <span>
+    <i class="fa fa-spinner fa-spin" id="loader" style="font-size:24px"></i>
+</span>
+    <div class="searchAcasa">
+        <input id="typeahead-template" type="text" class="form-control searchAcasaInput" (selectItem)="selectedItem($event)" [(ngModel)]="model" [ngbTypeahead]="search" [resultTemplate]="rt"
+               [inputFormatter]="formatter" (change)="onLoad()" />
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </div>
+    <img src="../../../content/images/colaj.jpg" style="width: 100%; padding-top: 25px;">
+</div>
+
+
+
+<div class="postari" id="postari">
+    <h2>Atractii si Obiective turistice </h2>
+    <ng-container *ngFor="let objective of objectives | searchfilterby:filter;let i = index">
+        <div *ngIf="i < 5" class="polaroid">
+            <p id="objectiveName">{{objective.name}}</p>
+            <a href="/#/objective/{{objective.id}}">
+                <img id= "ImgObjective" [src]="'data:' + objective.coverImageContentType + ';base64,' + objective.coverImage" alt="picture here" >
+            </a>
+            <div class="container">
+                <p>{{objective.description}} </p>
+                <!--<div class="details">Detalii</div>
+                -->
+            </div>
+        </div>
+</div>
