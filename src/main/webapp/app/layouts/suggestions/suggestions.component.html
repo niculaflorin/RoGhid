@@ -3,13 +3,13 @@
         <a href="#">Recomandari</a>
     </div>
     <ul id="options">
-        <li class="dropdown">Orase
-            <div class="dropdown-content">
+        <li class="dropdown">Județe
+            <div class="dropdown-content" style="max-height:300px;overflow-y:auto;">
                 <a href="javascript:;" class="not-active" *ngFor=" let city of cities" (click)="changefilter(city.id,1)">{{city.name}}</a>
             </div>
         </li>
         <li class="dropdown">Regiuni
-            <div class="dropdown-content">
+            <div class="dropdown-content" style="max-height:300px;overflow-y:auto;">
                 <a href="javascript:;" *ngFor=" let region of regions" (click)="changefilter(region.id,2)">{{region.name}}</a>
             </div>
         </li>

@@ -1,7 +1,8 @@
 <div *ngIf="objective">
     <div class="objectiveCoverBox">
         <div *ngIf="objective.coverImage">
-            <img [src]="'data:' + objective.coverImageContentType + ';base64,' + objective.coverImage" style="max-width: 100%;" alt="objective image"/>
+            <img [src]="'data:' + objective.coverImageContentType + ';base64,' + objective.coverImage"
+                 style="max-width: 100%;" alt="objective image"/>
         </div>
         <p class="objectiveNameDisplay">{{objective.name}}</p>
     </div>
@@ -10,10 +11,14 @@
         <tr>
             <td class="leftbox">
                 <p style="color:green;font-weight:bold;text-align:center;">Descriere</p>
-                <span>{{objective.description}}</span>y
+                <span>{{objective.description}}</span>
             </td>
             <td class="centerbox">
-                <rating [(ngModel)]="objective.rating" [readonly]="true"></rating>
+                <p style="color:green;font-weight:bold;text-align:center;">Rating</p>
+                <div style="text-align:center;">
+                    <rating [(ngModel)]="objective.rating" [readonly]="true"></rating>
+                    <span style="color:green;font-weight:bold;">{{objective.rating}}</span>
+                </div>
             </td>
             <td class="rightbox">
                 <agm-map [latitude]="objective.latitude" [longitude]="objective.longitude" [zoom]="9">

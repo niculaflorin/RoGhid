@@ -12,6 +12,10 @@ agm-map {
 	color: #fff;
 }
 
+.objectiveCoverBox img{
+    width: 100%;
+}
+
 .leftbox {
 	width: 33.33%;
 	padding: 10px;
@@ -21,7 +25,7 @@ agm-map {
 .centerbox {
 	width: 33.33%;
 	padding: 10px;
-	vertical-align: top;
+	vertical-align: center;
 	border-left: 1px solid;
 	border-right: 1px solid;
 	border-color: lightgray;
