@@ -59,9 +59,9 @@ export class SuggestionsComponent implements OnInit {
     this.loadRegions();
     }
 
-    ShowList() {
+    toggleShowFilterList() {
         this.cr = 0;
-        if (document.getElementById('options').style.display  = 'none') {
+        if (document.getElementById('options').style.display  == 'none') {
             document.getElementById('options').style.display = 'block';
         } else {
             document.getElementById('options').style.display  = 'none';

@@ -1,9 +1,8 @@
 <nav class="navbar navbar-dark navbar-expand-md jh-navbar">
     <div class="jh-logo-container float-left">
-      <span style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776;
+      <span style="font-size:30px;cursor:pointer" (click)="toggleNav()">&#9776;
       </span>
       <div id="mySidenav" class="sidenav">
-          <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
           <a routerLinkActive="active" routerLink="acasa" [routerLinkActiveOptions]="{exact: true}">
               <i class="fa fa-home" aria-hidden="true"></i>
               <span>Acasa</span>
