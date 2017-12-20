@@ -41,6 +41,9 @@ export class SuggestionsComponent implements OnInit {
         this.cityService.query().subscribe(
             (res: ResponseWrapper) => {
                 this.cities = res.json;
+            },
+            error => {
+                this.cities = [];
             }
         );
     }
@@ -49,28 +52,37 @@ export class SuggestionsComponent implements OnInit {
         this.regionService.query().subscribe(
             (res: ResponseWrapper) => {
                 this.regions = res.json;
+            },
+            error => {
+                this.regions = [];
             }
         );
     }
     ngOnInit() {
-
-    this.loadAll();
-    this.loadCities();
-    this.loadRegions();
+        this.loadAll();
+        this.loadCities();
+        this.loadRegions();
+        document.getElementById('options').style.display  = 'none';
     }
 
     toggleShowFilterList() {
         this.cr = 0;
         if (document.getElementById('options').style.display  == 'none') {
             document.getElementById('options').style.display = 'block';
+            if (this.regions.length == 0) {
+                this.loadRegions();
+            }
+            if (this.cities.length == 0) {
+                this.loadCities();
+            }
         } else {
             document.getElementById('options').style.display  = 'none';
         }
     }
 
     changefilter(i, value) {
-      this.filter = i;
-      this.cr = value;
+        this.filter = i;
+        this.cr = value;
     }
     getFilter() {
         return this.filter;
