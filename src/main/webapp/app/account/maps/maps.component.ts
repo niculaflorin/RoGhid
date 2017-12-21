@@ -59,6 +59,7 @@ export class MapsComponent {
     }
 
     ngOnInit(): void {
+        this.objective = new Objective();
         this.loadAll();
     }
 

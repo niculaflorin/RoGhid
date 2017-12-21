@@ -5,7 +5,7 @@
                 [iconUrl]="markerIconUrl()"
                 (markerClick)="markerInfo(marker.id); closeInfoWindow(infoWindow)">
         <agm-info-window #infoWindow [maxWidth]="250" [latitude]="marker.latitude + 0.2" [longitude]="marker.longitude" >
-            <div class="si-content">
+            <div class="si-content" *ngIf="objective.id == marker.id">
                 <div class="title">{{objective.name}}</div>
                 <br>
                 <div class="description" ><strong>{{objective.description}}</strong></div>
@@ -20,6 +20,9 @@
                 <br>
                 <a href="/#/objective/{{marker.id}}">
                     <p id ="detaliiObiectiv" > Detalii </p></a>
+            </div>
+            <div class="si-content" *ngIf="objective.id != marker.id">
+                <div class="title">Se încarcă datele obiectivului ...</div>
             </div>
 
         </agm-info-window>
