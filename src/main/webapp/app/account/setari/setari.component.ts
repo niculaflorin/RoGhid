@@ -6,7 +6,10 @@ import { LoginModalService, EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE } f
 
 @Component({
     selector: 'jhi-setari',
-    templateUrl: './setari.component.html'
+    templateUrl: './setari.component.html',
+    styleUrls: [
+        './setari.css'
+    ]
 })
 export class SetariComponent implements OnInit {
 

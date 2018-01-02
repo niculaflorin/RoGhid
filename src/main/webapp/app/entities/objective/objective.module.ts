@@ -1,6 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
+import {RatingModule} from "ng2-rating";
+import { AgmCoreModule } from '@agm/core';
 import { RoGhidSharedModule } from '../../shared';
 import {
     ObjectiveService,
@@ -23,6 +24,10 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         RoGhidSharedModule,
+        RatingModule,
+        AgmCoreModule.forRoot({
+            apiKey: 'AIzaSyCYwWA88TpLG7s3J0AivYirG7B4U2nWD4I'
+        }),
         RouterModule.forRoot(ENTITY_STATES, { useHash: true })
     ],
     declarations: [

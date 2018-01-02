@@ -1,20 +1,30 @@
 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
-    <agm-marker >
-        <!--<sebm-google-map-marker
-            [latitude]="lat"
-            [longitude]="lng"
-            (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow">
-            <agm-info-window #infoWindow>
-                <strong>iiiii</strong>
-            </agm-info-window>
-        </sebm-google-map-marker>-->
-        <agm-marker *ngFor="let marker of markers"
-                                [latitude]="marker.lat"
-                                [longitude]="marker.lng"
-                                (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow">
-            <agm-info-window #infoWindow>
-                <strong>{{marker.description}}</strong>
-            </agm-info-window>
-        </agm-marker>
+    <agm-marker *ngFor="let marker of markers"
+                [latitude]="marker.latitude"
+                [longitude]="marker.longitude"
+                [iconUrl]="markerIconUrl()"
+                (markerClick)="markerInfo(marker.id); closeInfoWindow(infoWindow)">
+        <agm-info-window #infoWindow [maxWidth]="250" [latitude]="marker.latitude + 0.2" [longitude]="marker.longitude" >
+            <div class="si-content" *ngIf="objective.id == marker.id">
+                <div class="title">{{objective.name}}</div>
+                <br>
+                <div class="description" ><strong>{{objective.description}}</strong></div>
+                <br>
+                <rating [(ngModel)]="objective.rating" [readonly]="true"></rating>
+                <!--<rating [(ngModel)]="marker.rating" [fullIcon]="'◆'"-->
+                <!--[emptyIcon]="'◇'"></rating>-->
+                <br>
+                <img [src]="'data:' + objective.coverImageContentType + ';base64,' + objective.coverImage" style="max-width: 100%;" alt="objective image"/>
+                <!--<div class="imgSrc"><img src={{objective.coverImage}} id="img2"></div>-->
+                <!--Linkul catre componenta de detalii-->
+                <br>
+                <a href="/#/objective/{{marker.id}}">
+                    <p id ="detaliiObiectiv" > Detalii </p></a>
+            </div>
+            <div class="si-content" *ngIf="objective.id != marker.id">
+                <div class="title">Se încarcă datele obiectivului ...</div>
+            </div>
+
+        </agm-info-window>
     </agm-marker>
 </agm-map>

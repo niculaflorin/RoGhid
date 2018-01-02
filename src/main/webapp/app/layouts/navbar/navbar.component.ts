@@ -78,11 +78,18 @@ export class NavbarComponent implements OnInit {
     }
 
     openNav() {
-    document.getElementById('mySidenav').style.width = '250px';
+        document.getElementById('mySidenav').style.width = '250px';
     }
 
     closeNav() {
-    document.getElementById('mySidenav').style.width = '0';
+        document.getElementById('mySidenav').style.width = '0px';
     }
 
+    toggleNav() {
+        if (document.getElementById('mySidenav').style.width == '0px') {
+            this.openNav();
+        } else {
+            this.closeNav();
+        }
+    }
 }

@@ -1,10 +1,10 @@
-<div>
+<div class="listObjectives">
     <h2>
-        <span jhiTranslate="roGhidApp.objective.home.title">Objectives</span>
-        <button class="btn btn-primary float-right jh-create-entity create-objective" [routerLink]="['/', { outlets: { popup: ['objective-new'] } }]">
+        <span>Lista cu obiective</span>
+        <button *jhiHasAnyAuthority="'ROLE_OBJECTIVE_MANAGER'" class="btn btn-green float-right jh-create-entity create-objective" [routerLink]="['/', { outlets: { popup: ['objective-new'] } }]">
             <span class="fa fa-plus"></span>
-            <span  jhiTranslate="roGhidApp.objective.home.createLabel">
-            Create new Objective
+            <span>
+            Adaugati un obiectiv nou
             </span>
         </button>
     </h2>
@@ -16,31 +16,31 @@
         <table class="table table-striped">
             <thead>
             <tr>
-            <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="roGhidApp.objective.name">Name</span></th>
-            <th><span jhiTranslate="roGhidApp.objective.description">Description</span></th>
-            <th><span jhiTranslate="roGhidApp.objective.imagePath">Image Path</span></th>
+            <!-- <th><span jhiTranslate="global.field.id">ID</span></th> -->
+            <th><span>Nume</span></th>
+            <th><span>Descriere</span></th>
+            <!-- <th><span jhiTranslate="roGhidApp.objective.imagePath">Image Path</span></th>
             <th><span jhiTranslate="roGhidApp.objective.creationDate">Creation Date</span></th>
             <th><span jhiTranslate="roGhidApp.objective.rating">Rating</span></th>
             <th><span jhiTranslate="roGhidApp.objective.latitude">Latitude</span></th>
             <th><span jhiTranslate="roGhidApp.objective.longitude">Longitude</span></th>
             <th><span jhiTranslate="roGhidApp.objective.creator">Creator</span></th>
             <th><span jhiTranslate="roGhidApp.objective.city">City</span></th>
-            <th><span jhiTranslate="roGhidApp.objective.objectiveWishList">Objective Wish List</span></th>
+            <th><span jhiTranslate="roGhidApp.objective.objectiveWishList">Objective Wish List</span></th> -->
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let objective of objectives ;trackBy: trackId">
-                <td><a [routerLink]="['../objective', objective.id ]">{{objective.id}}</a></td>
-                <td>{{objective.name}}</td>
+                <!-- <td><a [routerLink]="['../objective', objective.id ]">{{objective.id}}</a></td> -->
+                <td><a [routerLink]="['../objective', objective.id ]">{{objective.name}}</a></td>
                 <td>{{objective.description}}</td>
-                <td>{{objective.imagePath}}</td>
+                <!-- <td>{{objective.imagePath}}</td>
                 <td>{{objective.creationDate | date:'medium'}}</td>
                 <td>{{objective.rating}}</td>
                 <td>{{objective.latitude}}</td>
-                <td>{{objective.longitude}}</td>
-                <td>
+                <td>{{objective.longitude}}</td> -->
+                <!-- <td>
                     <div *ngIf="objective.creator">
                         <a [routerLink]="['../user-account', objective.creator?.id ]" >{{objective.creator?.id}}</a>
                     </div>
@@ -54,28 +54,28 @@
                     <div *ngIf="objective.objectiveWishList">
                         <a [routerLink]="['../objective-wish-list', objective.objectiveWishList?.id ]" >{{objective.objectiveWishList?.id}}</a>
                     </div>
-                </td>
+                </td> -->
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
                                 [routerLink]="['../objective', objective.id ]"
                                 class="btn btn-info btn-sm">
                             <span class="fa fa-eye"></span>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            <span class="d-none d-md-inline">Detali</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'objective/'+ objective.id + '/edit'} }]"
                                 replaceUrl="true"
-                                class="btn btn-primary btn-sm">
+                                class="btn btn-green btn-sm">
                             <span class="fa fa-pencil"></span>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            <span class="d-none d-md-inline">Editeaza</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'objective/'+ objective.id + '/delete'} }]"
                                 replaceUrl="true"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            <span class="d-none d-md-inline">Sterge</span>
                         </button>
                     </div>
                 </td>

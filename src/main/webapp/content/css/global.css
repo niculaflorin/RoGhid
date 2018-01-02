@@ -10,7 +10,8 @@ body {
     background: #e4e5e6;
     background-image: url("../images/bg-3.jpeg");
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 a {
@@ -50,11 +51,11 @@ Generic styles
 
 .jh-card {
     padding: 1.5%;
-    margin-top: 20px;
     border: none;
     margin-left:250px;
     margin-right: 250px;
     background-color: #e1f3dbd6;
+    top: 70px;
 }
 
 .error {
@@ -258,3 +259,11 @@ Social Buttons
     color: #fff;
 }
 /* jhipster-needle-css-add-main JHipster will add new css style */
+.btn-green{
+  background-color: #1e931c;
+  color: #fff;
+  border-color: #1e931c;
+}
+.listObjectives{
+  background-color: #e1f3dbe6;
+}

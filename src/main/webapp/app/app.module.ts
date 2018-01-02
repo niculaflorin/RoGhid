@@ -27,6 +27,7 @@ import {
     SuggestionsComponent
 } from './layouts';
 
+import { FilterPipe } from './layouts/suggestions/filter.pipe';
 
 @NgModule({
     imports: [
@@ -51,7 +52,8 @@ import {
         ErrorComponent,
         ActiveMenuDirective,
         FooterComponent,
-        SuggestionsComponent
+        SuggestionsComponent,
+        FilterPipe
     ],
     providers: [
         ProfileService,

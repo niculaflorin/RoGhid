@@ -1,3 +1,46 @@
+
 agm-map {
     height: 600px;
+}
+
+div .title{
+    color:black;
+    width: 100%;
+    font-weight: bold;
+    font-size: large;
+}
+div .imgSrc img{
+    width: 100%;
+}
+
+
+div .description{
+    color: dimgray;
+    width: 100%;
+}
+
+.si-content{
+    position: relative;
+    width: 100%;
+}
+.stars_rating {
+    display: block;
+    text-align: center;
+    line-height: 2em !important;
+}
+
+.rating_list_review {
+    font-size: 14px;
+}
+
+@-moz-document url-prefix() {
+    .star-icon{
+        line-height: 28px !important;
+    }
+}
+
+.star-icon[_ngcontent-rmx-6] {
+    color: #ddd;
+    font-size: 2em;
+    position: relative;
 }

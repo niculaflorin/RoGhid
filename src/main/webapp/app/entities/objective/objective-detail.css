@@ -1,0 +1,58 @@
+/* ==========================================================================
+Objective detail styles
+========================================================================== */
+agm-map {
+    height: 300px;
+    width: 300px;
+}
+
+.objectiveCoverBox{
+	position: relative;
+	overflow: hidden;
+	color: #fff;
+}
+
+.objectiveCoverBox img{
+    width: 100%;
+}
+
+.leftbox {
+	width: 33.33%;
+	padding: 10px;
+	vertical-align: center;
+}
+
+.centerbox {
+	width: 33.33%;
+	padding: 10px;
+	vertical-align: center;
+	border-left: 1px solid;
+	border-right: 1px solid;
+	border-color: lightgray;
+}
+
+.rightbox {
+	width: 33.33%;
+	padding: 10px;
+	vertical-align: top;
+	overflow:hidden;
+}
+
+.objectiveNameDisplay{
+	margin-bottom:10px;
+	position:absolute;
+	bottom: 0px;
+	color: white;
+	font: bold 24px/45px Helvetica, Sans-Serif;
+	background: rgb(0, 0, 0); /* fallback color */
+	background: rgba(0, 0, 0, 0.7);
+	width: 100%;
+	padding: 10px;
+}
+
+.checked {
+	color: green;
+}
+.notchecked {
+	color: gray;
+}

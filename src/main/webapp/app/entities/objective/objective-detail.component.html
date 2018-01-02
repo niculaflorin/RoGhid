@@ -1,56 +1,37 @@
-
 <div *ngIf="objective">
-    <h2><span jhiTranslate="roGhidApp.objective.detail.title">Objective</span> {{objective.id}}</h2>
+    <div class="objectiveCoverBox">
+        <div *ngIf="objective.coverImage">
+            <img [src]="'data:' + objective.coverImageContentType + ';base64,' + objective.coverImage"
+                 style="max-width: 100%;" alt="objective image"/>
+        </div>
+        <p class="objectiveNameDisplay">{{objective.name}}</p>
+    </div>
+    <hr>
+    <table style="width:100%; table-layout: fixed;">
+        <tr>
+            <td class="leftbox">
+                <p style="color:green;font-weight:bold;text-align:center;">Descriere</p>
+                <span>{{objective.description}}</span>
+            </td>
+            <td class="centerbox">
+                <p style="color:green;font-weight:bold;text-align:center;">Rating</p>
+                <div style="text-align:center;">
+                    <rating [(ngModel)]="objective.rating" [readonly]="true"></rating>
+                    <span style="color:green;font-weight:bold;">{{objective.rating}}</span>
+                </div>
+            </td>
+            <td class="rightbox">
+                <agm-map [latitude]="objective.latitude" [longitude]="objective.longitude" [zoom]="9" style="width: 100%;">
+                    <agm-marker [latitude]="objective.latitude"
+                                [longitude]="objective.longitude">
+                        <!--[iconUrl]="markerIconUrl()">-->
+                    </agm-marker>
+                </agm-map>
+            </td>
+        </tr>
+    </table>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="roGhidApp.objective.name">Name</span></dt>
-        <dd>
-            <span>{{objective.name}}</span>
-        </dd>
-        <dt><span jhiTranslate="roGhidApp.objective.description">Description</span></dt>
-        <dd>
-            <span>{{objective.description}}</span>
-        </dd>
-        <dt><span jhiTranslate="roGhidApp.objective.imagePath">Image Path</span></dt>
-        <dd>
-            <span>{{objective.imagePath}}</span>
-        </dd>
-        <dt><span jhiTranslate="roGhidApp.objective.creationDate">Creation Date</span></dt>
-        <dd>
-            <span>{{objective.creationDate | date:'medium'}}</span>
-        </dd>
-        <dt><span jhiTranslate="roGhidApp.objective.rating">Rating</span></dt>
-        <dd>
-            <span>{{objective.rating}}</span>
-        </dd>
-        <dt><span jhiTranslate="roGhidApp.objective.latitude">Latitude</span></dt>
-        <dd>
-            <span>{{objective.latitude}}</span>
-        </dd>
-        <dt><span jhiTranslate="roGhidApp.objective.longitude">Longitude</span></dt>
-        <dd>
-            <span>{{objective.longitude}}</span>
-        </dd>
-        <dt><span jhiTranslate="roGhidApp.objective.creator">Creator</span></dt>
-        <dd>
-            <div *ngIf="objective.creator">
-                <a [routerLink]="['/user-account', objective.creator?.id]">{{objective.creator?.id}}</a>
-            </div>
-        </dd>
-        <dt><span jhiTranslate="roGhidApp.objective.city">City</span></dt>
-        <dd>
-            <div *ngIf="objective.city">
-                <a [routerLink]="['/city', objective.city?.id]">{{objective.city?.id}}</a>
-            </div>
-        </dd>
-        <dt><span jhiTranslate="roGhidApp.objective.objectiveWishList">Objective Wish List</span></dt>
-        <dd>
-            <div *ngIf="objective.objectiveWishList">
-                <a [routerLink]="['/objective-wish-list', objective.objectiveWishList?.id]">{{objective.objectiveWishList?.id}}</a>
-            </div>
-        </dd>
-    </dl>
 
     <button type="submit"
             (click)="previousState()"

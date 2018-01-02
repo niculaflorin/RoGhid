@@ -1,16 +1,28 @@
 <div id="mySidenav" class="sidenav">
-    <div id="menu" class="w3-container w3-light-grey" (click)="ShowList()">
-        <a href="">Recomandari</a>
+    <div id="menu" class="w3-container w3-light-grey" (click)="toggleShowFilterList()">
+        <span style="font-weight: bold;">Recomandări</span>
     </div>
     <ul id="options">
-        <li><a href="">Orase principale</a></li>
-        <li><a href="">Regiuni</a></li>
+        <li class="dropdown">Județe
+            <div class="dropdown-content" style="max-height:300px;overflow-y:auto;">
+                <a href="javascript:;" class="not-active" *ngFor=" let city of cities" (click)="changefilter(city.id,1)">{{city.name}}</a>
+            </div>
+        </li>
+        <li class="dropdown">Regiuni
+            <div class="dropdown-content" style="max-height:300px;overflow-y:auto;">
+                <a href="javascript:;" *ngFor=" let region of regions" (click)="changefilter(region.id,2)">{{region.name}}</a>
+            </div>
+        </li>
     </ul>
     <ul id = "obiective">
-        <li *ngFor=" let objective of objectives">
-        <img src= "../../../content/images/brasov.jpg" alt="picture here" >
-           <p id="numeObiectiv"> {{objective.name}} </p>
-           <p id ="descriereObiectiv" > {{objective.description}} </p>
+        <ng-container *ngFor="let objective of objectives | filter:getFilter():getTypeObjective(); let i = index">
+            <li *ngIf="i < 3">
+            <img id= "ImgObjective" [src]="'data:' + objective.coverImageContentType + ';base64,' + objective.coverImage" alt="picture here" >
+            <p id="numeObiectiv"> {{objective.name}} </p>
+            <a href="/#/objective/{{objective.id}}">
+              <p id ="detaliiObiectiv" > Detalii </p>
+            </a>
+
   </li>
 </ul>
   </div>

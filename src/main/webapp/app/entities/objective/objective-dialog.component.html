@@ -1,7 +1,7 @@
 <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
 
     <div class="modal-header">
-        <h4 class="modal-title" id="myObjectiveLabel" jhiTranslate="roGhidApp.objective.home.createOrEditLabel">Create or edit a Objective</h4>
+        <h4 class="modal-title" id="myObjectiveLabel" jhiTranslate="roGhidApp.objective.home.createOrEditLabel">Creează sau editează un obiectiv</h4>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 (click)="clear()">&times;</button>
     </div>
@@ -13,7 +13,7 @@
                    [(ngModel)]="objective.id" readonly />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="roGhidApp.objective.name" for="field_name">Name</label>
+            <label class="form-control-label" jhiTranslate="roGhidApp.objective.name" for="field_name">Nume</label>
             <input type="text" class="form-control" name="name" id="field_name"
                 [(ngModel)]="objective.name" required minlength="3" />
             <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="roGhidApp.objective.description" for="field_description">Description</label>
+            <label class="form-control-label" jhiTranslate="roGhidApp.objective.description" for="field_description">Scurtă descriere</label>
             <input type="text" class="form-control" name="description" id="field_description"
                 [(ngModel)]="objective.description" required minlength="10" />
             <div [hidden]="!(editForm.controls.description?.dirty && editForm.controls.description?.invalid)">
@@ -42,13 +42,13 @@
                 </small>
             </div>
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label class="form-control-label" jhiTranslate="roGhidApp.objective.imagePath" for="field_imagePath">Image Path</label>
             <input type="text" class="form-control" name="imagePath" id="field_imagePath"
                 [(ngModel)]="objective.imagePath"  />
-        </div>
+        </div> -->
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="roGhidApp.objective.creationDate" for="field_creationDate">Creation Date</label>
+            <label class="form-control-label" jhiTranslate="roGhidApp.objective.creationDate" for="field_creationDate">Data creeri</label>
             <div class="d-flex">
                 <input id="field_creationDate" type="datetime-local" class="form-control" name="creationDate" [(ngModel)]="objective.creationDate"
                 required  />
@@ -84,37 +84,54 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="roGhidApp.objective.latitude" for="field_latitude">Latitude</label>
+            <label class="form-control-label" jhiTranslate="roGhidApp.objective.latitude" for="field_latitude">Latitudine</label>
             <input type="number" class="form-control" name="latitude" id="field_latitude"
                 [(ngModel)]="objective.latitude"  />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="roGhidApp.objective.longitude" for="field_longitude">Longitude</label>
+            <label class="form-control-label" jhiTranslate="roGhidApp.objective.longitude" for="field_longitude">Longitudine</label>
             <input type="number" class="form-control" name="longitude" id="field_longitude"
                 [(ngModel)]="objective.longitude"  />
         </div>
-
         <div class="form-group">
+            <label class="form-control-label" jhiTranslate="roGhidApp.objective.coverImage" for="field_coverImage">Imagine de copertă</label>
+            <div>
+                <img [src]="'data:' + objective.coverImageContentType + ';base64,' + objective.coverImage" style="max-height: 100px;" *ngIf="objective.coverImage" alt="objective image"/>
+                <div *ngIf="objective.coverImage" class="form-text text-danger clearfix">
+                    <span class="pull-left">{{objective.coverImageContentType}}, {{byteSize(objective.coverImage)}}</span>
+                    <button type="button" (click)="clearInputImage('coverImage', 'coverImageContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="file_coverImage" (change)="setFileData($event, objective, 'coverImage', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+            </div>
+            <input type="hidden" class="form-control" name="coverImage" id="field_coverImage"
+                [(ngModel)]="objective.coverImage"  />
+            <input type="hidden" class="form-control" name="coverImageContentType" id="field_coverImageContentType"
+                [(ngModel)]="objective.coverImageContentType" />
+        </div>
+
+        <!-- <div class="form-group">
             <label class="form-control-label" jhiTranslate="roGhidApp.objective.creator" for="field_creator">Creator</label>
             <select class="form-control" id="field_creator" name="creator" [(ngModel)]="objective.creator">
                 <option [ngValue]="null"></option>
                 <option [ngValue]="userAccountOption.id === objective.creator?.id ? objective.creator : userAccountOption" *ngFor="let userAccountOption of creators; trackBy: trackUserAccountById">{{userAccountOption.id}}</option>
             </select>
-        </div>
+        </div> -->
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="roGhidApp.objective.city" for="field_city">City</label>
+            <label class="form-control-label" jhiTranslate="roGhidApp.objective.city" for="field_city">Județ</label>
             <select class="form-control" id="field_city" name="city" [(ngModel)]="objective.city" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="cityOption.id === objective.city?.id ? objective.city : cityOption" *ngFor="let cityOption of cities; trackBy: trackCityById">{{cityOption.id}}</option>
+                <option [ngValue]="cityOption.id === objective.city?.id ? objective.city : cityOption" *ngFor="let cityOption of cities; trackBy: trackCityById">{{cityOption.name}}</option>
             </select>
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label class="form-control-label" jhiTranslate="roGhidApp.objective.objectiveWishList" for="field_objectiveWishList">Objective Wish List</label>
             <select class="form-control" id="field_objectiveWishList" name="objectiveWishList" [(ngModel)]="objective.objectiveWishList" >
                 <option [ngValue]="null"></option>
                 <option [ngValue]="objectiveWishListOption.id === objective.objectiveWishList?.id ? objective.objectiveWishList : objectiveWishListOption" *ngFor="let objectiveWishListOption of objectivewishlists; trackBy: trackObjectiveWishListById">{{objectiveWishListOption.id}}</option>
             </select>
-        </div>
+        </div> -->
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { RoGhidSharedModule } from '../shared';
 
 import { HOME_ROUTE, HomeComponent } from './';
+import {SearchFilter} from "./filterr.pipe";
 
 @NgModule({
     imports: [
@@ -12,6 +13,7 @@ import { HOME_ROUTE, HomeComponent } from './';
     ],
     declarations: [
         HomeComponent,
+        SearchFilter
     ],
     entryComponents: [
     ],

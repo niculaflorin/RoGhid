@@ -1,10 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
 
 import { Observable } from 'rxjs/Rx';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
+import { JhiEventManager, JhiAlertService, JhiDataUtils } from 'ng-jhipster';
 
 import { Objective } from './objective.model';
 import { ObjectivePopupService } from './objective-popup.service';
@@ -31,16 +31,26 @@ export class ObjectiveDialogComponent implements OnInit {
 
     constructor(
         public activeModal: NgbActiveModal,
+        private dataUtils: JhiDataUtils,
         private jhiAlertService: JhiAlertService,
         private objectiveService: ObjectiveService,
         private userAccountService: UserAccountService,
         private cityService: CityService,
         private objectiveWishListService: ObjectiveWishListService,
+        private elementRef: ElementRef,
         private eventManager: JhiEventManager
     ) {
     }
 
     ngOnInit() {
+        var now = new Date(), year, month, date, hours, minutes, seconds, formattedDateTime;
+        year = now.getFullYear();
+        month = now.getMonth().toString().length === 1 ? '0' + (now.getMonth() + 1).toString() : now.getMonth() + 1;
+        date = now.getDate().toString().length === 1 ? '0' + (now.getDate()).toString() : now.getDate();
+        hours = now.getHours().toString().length === 1 ? '0' + now.getHours().toString() : now.getHours();
+        minutes = now.getMinutes().toString().length === 1 ? '0' + now.getMinutes().toString() : now.getMinutes();
+        formattedDateTime = year + '-' + month + '-' + date + 'T' + hours + ':' + minutes;
+        this.objective.creationDate = formattedDateTime;
         this.isSaving = false;
         this.userAccountService
             .query({filter: 'objective-is-null'})
@@ -59,6 +69,22 @@ export class ObjectiveDialogComponent implements OnInit {
             .subscribe((res: ResponseWrapper) => { this.cities = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.objectiveWishListService.query()
             .subscribe((res: ResponseWrapper) => { this.objectivewishlists = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+    }
+
+    byteSize(field) {
+        return this.dataUtils.byteSize(field);
+    }
+
+    openFile(contentType, field) {
+        return this.dataUtils.openFile(contentType, field);
+    }
+
+    setFileData(event, entity, field, isImage) {
+        this.dataUtils.setFileData(event, entity, field, isImage);
+    }
+
+    clearInputImage(field: string, fieldContentType: string, idInput: string) {
+        this.dataUtils.clearInputImage(this.objective, this.elementRef, field, fieldContentType, idInput);
     }
 
     clear() {

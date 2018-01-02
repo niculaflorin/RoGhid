@@ -4,6 +4,10 @@ import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Objective } from '../../entities/objective/objective.model';
 import { ObjectiveService } from '../../entities/objective/objective.service';
 import { ResponseWrapper, createRequestOption } from '../../shared';
+import { City } from '../../entities/city/city.model';
+import { CityService } from '../../entities/city/city.service';
+import { Region } from '../../entities/region/region.model';
+import { RegionService } from '../../entities/region/region.service';
 
 @Component({
     selector: 'jhi-suggestions',
@@ -14,31 +18,78 @@ import { ResponseWrapper, createRequestOption } from '../../shared';
 })
 export class SuggestionsComponent implements OnInit {
     objectives: Objective[];
-    imageUrl = '../../../content/images/brasov.jpg';
+    filter: number;
+    cities: City[];
+    regions: Region[];
+    cr: number;
     constructor(
-        private objectiveService: ObjectiveService
+        private objectiveService: ObjectiveService,
+        private cityService: CityService,
+        private regionService: RegionService
     ) {
+
     }
 
     loadAll() {
         this.objectiveService.query().subscribe(
             (res: ResponseWrapper) => {
                 this.objectives = res.json;
+            }
+        );
+    }
+    loadCities() {
+        this.cityService.query().subscribe(
+            (res: ResponseWrapper) => {
+                this.cities = res.json;
             },
+            error => {
+                this.cities = [];
+            }
         );
     }
 
+    loadRegions() {
+        this.regionService.query().subscribe(
+            (res: ResponseWrapper) => {
+                this.regions = res.json;
+            },
+            error => {
+                this.regions = [];
+            }
+        );
+    }
     ngOnInit() {
-
-    this.loadAll();
+        this.loadAll();
+        this.loadCities();
+        this.loadRegions();
+        document.getElementById('options').style.display  = 'none';
     }
 
-    ShowList() {
-        document.getElementById('options').style.display = 'block';
+    toggleShowFilterList() {
+        this.cr = 0;
+        if (document.getElementById('options').style.display  == 'none') {
+            document.getElementById('options').style.display = 'block';
+            if (this.regions.length == 0) {
+                this.loadRegions();
+            }
+            if (this.cities.length == 0) {
+                this.loadCities();
+            }
+        } else {
+            document.getElementById('options').style.display  = 'none';
+        }
     }
 
-     HideList() {
-       document.getElementById('options').style.display = 'none';
+    changefilter(i, value) {
+        this.filter = i;
+        this.cr = value;
+    }
+    getFilter() {
+        return this.filter;
+    }
+
+    getTypeObjective() {
+        return this.cr;
     }
 
 }
